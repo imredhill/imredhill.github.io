@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.bootcss.com/meyer-reset/2.0/reset.min.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<style>
+    .list {
+        width: 900px;
+        margin: 50px auto;
+        background-color: rgba(255, 255, 255, 0.733);
+        border: 1px solid wheat;
+        box-shadow: 0 0 10px rgba(73, 66, 66);
+        ;
+    }
+
+    .list dl {
+        height: 50px;
+        border-bottom: 1px dashed gray;
+        line-height: 50px;
+        margin: 0 24px;
+    }
+
+    .list dl dt {
+        float: left;
+        font-size: 16px;
+        color: gray;
+    }
+
+    .list dl dd {
+        float: left;
+        font-size: 14px;
+        margin: 0 12px;
+        cursor: pointer;
+    }
+
+    .list dl.selected {
+        background: #efefef;
+        margin: 0;
+        padding: 0 20px;
+        border: none;
+    }
+
+    dd.active {
+        color: red;
+        font-weight: bold;
+    }
+
+    .list dl.selected dd {
+        border: 1px solid red;
+        height: 24px;
+        line-height: 24px;
+        margin-top: 15px;
+        padding: 0 2px 0 10px;
+        border-radius: 2px;
+        background-color: whitesmoke;
+    }
+
+    .list dl.selected dd span {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        text-align: center;
+        line-height: 20px;
+        background: red;
+        color: whitesmoke;
+        margin-left: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+</style>
+
+<body>
+    <div class="list">
+        <dl>
+            <dt>品牌：</dt>
+            <dd>惠普</dd>
+            <dd>联想</dd>
+            <dd>戴尔</dd>
+            <dd>三星</dd>
+            <dd>宏基</dd>
+            <dd>苹果</dd>
+            <dd>神舟</dd>
+            <dd>华硕</dd>
+            <dd>方正</dd>
+        </dl>
+
+        <dl>
+            <dt>价格：</dt>
+            <dd>3000-3999</dd>
+            <dd>4000-4999</dd>
+            <dd>5000-5999</dd>
+            <dd>6000-6999</dd>
+            <dd>7000-7999</dd>
+            <dd>8000-8999</dd>
+            <dd>9000-9999</dd>
+            <dd>10000以上</dd>
+        </dl>
+
+        <dl>
+            <dt>尺寸：</dt>
+            <dd>8.9英寸以及以下</dd>
+            <dd>11英寸</dd>
+            <dd>12英寸</dd>
+            <dd>13英寸</dd>
+            <dd>14英寸</dd>
+            <dd>15英寸</dd>
+            <dd>16英寸</dd>
+        </dl>
+
+        <dl style="border: none;">
+            <dt>显卡：</dt>
+            <dd>独立显卡</dd>
+            <dd>集成显卡</dd>
+            <dd>核芯显卡</dd>
+        </dl>
+        <dl class="selected">
+            <dt>已选条件：</dt>
+        </dl>
+    </div>
+
+    <script>
+        var selected = document.querySelector('.selected');
+        var adl = document.querySelectorAll('dl:not(.select)');
+
+        for (var i = 0; i < adl.length; i++) {
+            adl[i].mask = false; //给每一行dl加属性，对应下面的dd标签，true=没有创建对应标签，false=已创建对应标签
+            select(i)
+            // console.log(select(i))
+        }
+
+        function select(j) {
+            var odd = adl[j].querySelectorAll('dd')
+            var light = null;
+            var dd = null; //每一行都创建一个dd，在这表示如果标签已经创建好，通过这个变量能找到这个标签
+        
+        for (var h = 0; h < odd.length; h++) {
+            odd[h].onclick = function () {
+                //让当前点击变亮
+
+                if (light) {
+                    light.className = ''
+                }
+                this.className = 'active'
+
+                light = this;
+
+                // 创建dd标签
+                var node = this.parentNode
+                // console.log(node)
+
+                if (!node.mask) { //这里说明对应的dd还没创建
+                    dd = document.createElement('dd')
+                    dd.innerHTML = this.innerHTML
+                    selected.appendChild(dd)
+                    node.mask = true;
+                } else {
+                    dd.innerHTML = this.innerHTML
+                }
+
+                var span = document.createElement('span')
+                var that = this
+                span.innerHTML = 'x' //创建关闭按钮
+                span.onclick = function () {
+                    // console.log('xxxxx')
+                    //点击关闭。1移除dd,2去掉点击的高亮，3mask要换回false
+                    selected.removeChild(dd)
+                    that.className = ''
+                    node.mask = false
+
+                }
+                dd.appendChild(span)
+            }
+        }
+    }
+    </script>
+</body>
+
+</html>

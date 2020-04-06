@@ -1,0 +1,131 @@
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.wrap::after {
+    content: '';
+    clear: both;
+    display: block;
+}
+
+section.dropli {
+    background-color: aqua;
+    width: 1200px;
+    margin: 0 auto;
+    padding: 100px 0;
+
+    .wrap {
+        border-radius: 5px;
+        width: 1130px;
+        background:url(../img/bg/appointment-form.png) center no-repeat;
+        margin: 0 auto;
+        padding: 50px 20px;;
+        background-size: 100% auto;
+        form {
+            line-height: 71px;
+     
+            .box {
+               
+                width: 750px;
+                font-size: 0;   
+                label.input {
+                    width: 20%;
+                    display: inline-block;
+
+                    input {
+                        width: 100%;
+           
+                        border: none;
+                        outline: none;
+                        border-left: 1px solid #e4e4e4;
+                        height: 69px;
+                        padding-left:15px;
+                       
+                    }
+                    &:last-child{
+                        width: 30%;
+                    }
+                }
+
+                label.drop {
+                    width: 30%;
+                    background: white;
+                    position: relative;
+                    top: 0;
+                    left: 0;
+                    display: inline-block;
+                    line-height: 71px;
+                    font-size: 16px;
+                    position: relative;
+                    top: 2px;
+                    left: 0;
+                    span {
+                        padding: 0 20px;
+                        i {
+                            transition: all .3s;
+                            line-height: 70px;
+                        }
+                    }
+
+                    ul.card {
+                        background: yellow;
+                        width: 100%;
+                        opacity: 0;
+                        transition: all .5s;
+                        transform: scale(0.7);
+                        margin-top: 10px;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        border: 1px solid black;
+                        border-radius: 5px;
+                       
+                        li {
+                            padding: 0 20px;
+                            text-align: center;
+                            &:first-child{
+                                font-weight: bold;
+                                background: #f6f6f6;
+                            }
+                            &:hover{
+                                background: #e4e4e4;
+                            }
+                        }
+                    }
+
+                    &:hover {
+                        ul.card {
+                            opacity: 1;
+                            transform: scale(1);
+                            top: 70px;
+                        }
+
+                        span {
+                            i {
+                                transform: rotateZ(-180deg);
+                            }
+                        }
+
+                    }
+                }
+            }
+            input.btn{
+                height: 71px;
+                background: orange;
+                border: none;
+                outline: none;
+                padding: 0 50px;
+                color:white;
+                &:hover{
+                    background: #222222;
+                }
+            }
+        }
+
+    }
+
+}

@@ -1,0 +1,243 @@
+html {
+  height: 100%;
+}
+body {
+  display: flex;
+  height: 100%;
+  perspective: 1300px;
+  overflow: hidden;
+}
+.card {
+  width: 400px;
+  height: 550px;
+  background: url("600x600.jpg") center;
+  background-size: cover;
+  margin: auto;
+  position: relative;
+  border-radius: 15px;
+  transition: all 0.8s;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50% 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.card .mask {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  border-radius: 15px;
+  left: 0;
+  transition: inherit;
+}
+.card:before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  border-radius: 15px;
+  left: 0;
+  transition: inherit;
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 1px 14px 0px rgba(0, 0, 0, 0.4);
+}
+.card:after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  border-radius: 15px;
+  left: 0;
+  transition: inherit;
+  background: darkgray;
+  transform: translateZ(-20px);
+  z-index: -1;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.7);
+}
+.card h2 {
+  margin: 0px 0 10px 0;
+  transform: translateZ(4px);
+  color: white;
+  font-size: 30px;
+  line-height: 30px;
+  font-weight: 300;
+  font-family: 'Asar', serif;
+}
+.card h4 {
+  margin: 0px 0 30px 0;
+  font-size: 16px;
+  transform: translateZ(4px);
+  color: white;
+  line-height: 30px;
+  font-weight: 300;
+  font-family: 'Asar', serif;
+}
+.card h5 {
+  margin: 10px 0 40px 0;
+  font-size: 30px;
+  transform: translateZ(4px);
+  color: white;
+  line-height: 30px;
+  font-weight: 300;
+  font-family: 'Asar', serif;
+}
+.card.active {
+  transform: rotateX(60deg) translate3d(0px, -70px, 150px);
+}
+.card.active:before {
+  background: rgba(0, 0, 0, 0.4);
+}
+.card.active ul.chart li:nth-child(1) span {
+  width: 200px;
+}
+.card.active ul.chart li:nth-child(1)::after {
+  width: 200px;
+}
+.card.active ul.chart li:nth-child(1)::before {
+  content: 'M';
+  transform: translateZ(200px);
+}
+.card.active ul.chart li:nth-child(2) span {
+  width: 100px;
+}
+.card.active ul.chart li:nth-child(2)::after {
+  width: 100px;
+}
+.card.active ul.chart li:nth-child(2)::before {
+  transform: translateZ(100px);
+  content: 'T';
+}
+.card.active ul.chart li:nth-child(3) span {
+  width: 150px;
+}
+.card.active ul.chart li:nth-child(3)::after {
+  width: 150px;
+}
+.card.active ul.chart li:nth-child(3)::before {
+  transform: translateZ(150px);
+  content: 'W';
+}
+.card.active ul.chart li:nth-child(4) span {
+  width: 240px;
+}
+.card.active ul.chart li:nth-child(4)::after {
+  width: 240px;
+}
+.card.active ul.chart li:nth-child(4)::before {
+  transform: translateZ(240px);
+  content: 'T';
+}
+.card.active ul.chart li:nth-child(5) span {
+  width: 70px;
+}
+.card.active ul.chart li:nth-child(5)::after {
+  width: 70px;
+}
+.card.active ul.chart li:nth-child(5)::before {
+  transform: translateZ(70px);
+  content: 'F';
+}
+.card.active ul.chart li:nth-child(6) span {
+  width: 70px;
+}
+.card.active ul.chart li:nth-child(6)::after {
+  width: 70px;
+}
+.card.active ul.chart li:nth-child(6)::before {
+  transform: translateZ(70px);
+  content: 'S';
+}
+.card.active ul.chart li:nth-child(7) span {
+  width: 100px;
+}
+.card.active ul.chart li:nth-child(7)::after {
+  width: 100px;
+}
+.card.active ul.chart li:nth-child(7)::before {
+  content: 'S';
+  transform: translateZ(100px);
+}
+.card ul.chart {
+  display: flex;
+  justify-content: center;
+  transition: inherit;
+}
+.card ul.chart li {
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  margin: 10px;
+  position: relative;
+  top: 0;
+  left: 0;
+  transform: rotate(45deg);
+  transform-style: preserve-3d;
+  transition: inherit;
+}
+.card ul.chart li .chart-side {
+  content: "";
+  height: 20px;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #AAC1D1;
+  transform-origin: 0 100%;
+  color: black;
+  transition: inherit;
+}
+.card ul.chart li span {
+  overflow: hidden;
+  content: "";
+  height: 20px;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #AAC1D1;
+  transform-origin: 0 100%;
+  color: black;
+  transition: inherit;
+  width: 0px;
+  text-align: right;
+  transform: rotateY(-90deg) rotateX(-91deg) translateY(20px);
+}
+.card ul.chart li::after {
+  content: "";
+  height: 20px;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #AAC1D1;
+  transform-origin: 0 100%;
+  color: black;
+  transition: inherit;
+  width: 0px;
+  background: #80A6BC;
+  transform: rotateY(-90deg) translateZ(-20px);
+}
+.card ul.chart li::before {
+  content: "";
+  height: 20px;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #AAC1D1;
+  transform-origin: 0 100%;
+  color: black;
+  transition: inherit;
+  width: 20px;
+  background: #B7B5B9;
+  transform: translateZ(0px);
+}
+/*# sourceMappingURL=./style.css.map */

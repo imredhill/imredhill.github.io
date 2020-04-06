@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+
+    }
+
+    .card {
+        width: 200px;
+        height: 200px;
+        background-color: wheat;
+        box-shadow: 0 3px 5px #ddd;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 20px;
+        position: relative;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    p {
+        /* margin-top: 25px; */
+        display: inline-block;
+    }
+
+    .bg {
+
+        margin: 30px 50px 0;
+        width: 100px;
+        height: 100px;
+        background-color: gray;
+    }
+
+    .box {
+        position: absolute;
+        top: 4px;
+        left: 0;
+        margin: 30px 50px 0;
+        width: 100px;
+        height: 100px;
+        background-color: rgba(0, 255, 106, 0.5);
+        transition: all .5s;
+    }
+
+    .card:hover .boxA {
+        transform: rotate(45deg);
+    }
+
+    .card:hover .boxB {
+        transform: rotateX(45deg);
+    }
+
+    .card:hover .boxC {
+        transform: rotateY(45deg);
+    }
+
+    .card:hover .boxD {
+        transform: rotateZ(45deg);
+    }
+
+    .card:hover .boxE {
+        transform: scale(2);
+    }
+
+    .card:hover .boxF {
+        transform: scaleX(2);
+    }
+
+    .card:hover .boxG {
+        transform: scaleY(2);
+    }
+
+    .card:hover .boxH {
+        transform: skew(45deg, 45deg);
+    }
+
+    .card:hover .boxI {
+        transform: skewX(45deg);
+    }
+
+    .card:hover .boxJ {
+        transform: skewY(45deg);
+    }
+
+    .card:hover .boxK {
+        transform: translate(45px);
+    }
+
+    .card:hover .boxL {
+        transform: translateX(45px);
+    }
+
+    .card:hover .boxM {
+        transform: translateY(45px);
+    }
+
+    .card:hover .boxN {
+        transform: matrix(2, 2, 0, 2, 45, 0);
+    }
+
+    .card:hover .boxO {
+        transform: rotateX(90deg);
+        /* perspective: 100px; */
+    }
+
+    .card:hover .boxP {
+        transform: rotateY(90deg);
+        /* perspective: 100px; */
+    }
+
+    .card:hover .boxQ {
+        transform: rotateX(90deg);
+        /* perspective: 100px; */
+    }
+
+    .card:hover .boxR {
+        transform: rotateY(90deg);
+        /* perspective: 100px; */
+    }
+
+    .card:hover .boxS {
+        transform: rotate(45deg);
+    }
+
+    .card:hover .boxT {
+        transform: rotate(45deg);
+    }
+
+    .card:hover .boxU {
+        transform: rotateX(45deg);
+    }
+
+    .card:hover .boxV {
+        transform: rotateX(45deg);
+    }
+
+    .card:hover .boxW {
+        transform: rotateY(45deg);
+    }
+
+    .card:hover .boxX {
+        transform: rotateY(45deg);
+    }
+
+    .card:hover .boxY {
+        transform: scale(2);
+    }
+
+    .card:hover .boxZ {
+        transform: scale(2);
+    }
+
+    .card:hover .boxAS {
+        transform: scaleX(2);
+    }
+
+    .card:hover .boxBS {
+        transform: scaleX(2);
+    }
+
+    .card:hover .boxCS {
+        transform: scaleY(2);
+    }
+
+    .card:hover .boxDS {
+        transform: scaleY(2);
+    }
+</style>
+
+<body>
+    <div class="card">
+        <div class="bg">
+            <div class="box boxA"></div>
+        </div>
+        <p>rotate(45deg)</p>
+    </div>
+    <div class="card">
+        <div class="bg">
+            <div class="box boxB"></div>
+        </div>
+        <p>rotateX(45deg)</p>
+    </div>
+    <div class="card">
+        <div class="bg">
+            <div class="box boxC"></div>
+        </div>
+        <p>rotateY(45deg)</p>
+    </div>
+    <div class="card">
+        <div class="bg">
+            <div class="box boxD"></div>
+        </div>
+        <p>rotateZ(45deg)</p>
+    </div>
+    <div class="card">
+        <div class="bg">
+            <div class="box boxE"></div>
+        </div>
+        <p>scale(2)</p>
+    </div>
+    <div class="card">
+        <div class="bg">
+            <div class="box boxF"></div>
+        </div>
+        <p>scaleX(2)</p>
+    </div>
+    <div class="card">
+        <div class="bg">
+            <div class="box boxG"></div>
+        </div>
+        <p>scaleY(2)</p>
+    </div>
+    <div class="card">
+        <div class="bg">
+            <div class="box boxH"></div>
+        </div>
+        <p>skew(45deg, 45deg)</p>
+    </div>
+    <div class="card">
+        <div class="bg">
+            <div class="box boxI"></div>
+        </div>
+        <p>skewX(45deg)</p>
+    </div>
+    <div class="card">
+        <div class="bg">
+            <div class="box boxJ"></div>
+        </div>
+        <p>skewY(45deg)</p>
+    </div>
+    <div class="card">
+        <div class="bg">
+            <div class="box boxK"></div>
+        </div>
+        <p>translate(45px)</p>
+    </div>
+    <div class="card">
+        <div class="bg">
+            <div class="box boxL"></div>
+        </div>
+        <p>translateX(45px)</p>
+    </div>
+    <div class="card" style="margin-left: 500px;">
+        <div class="bg">
+            <div class="box boxM"></div>
+        </div>
+        <p>translateY(45px)</p>
+    </div>
+    <div class="card" style="margin-right: 500px;">
+        <div class="bg">
+            <div class="box boxN"></div>
+        </div>
+        <p>matrix(2, 2, 0, 2, 45, 0)</p>
+    </div>
+    <span>Perspective : 100</span>
+    <div class="card">
+        <div class="bg" style="perspective: 100px;top: -30px;left: -50px;">
+            <div class="box boxO" style="margin: 0;top: 0;"></div>
+        </div>
+        <p>rotateX(90deg)</p>
+    </div>
+    <div class="card">
+        <div class="bg" style="perspective: 100px;">
+            <div class="box boxP" style="margin: 0;top: 0;"></div>
+        </div>
+        <p>rotateY(90deg)</p>
+    </div>
+    <span>Perspective : 200</span>
+    <div class="card">
+        <div class="bg" style="perspective: 200px;top: -30px;left: -50px;">
+            <div class="box boxQ" style="margin: 0;top: 0;"></div>
+        </div>
+        <p>rotateX(90deg)</p>
+    </div>
+    <div class="card">
+        <div class="bg" style="perspective: 200px;">
+            <div class="box boxR" style="margin: 0;top: 0;"></div>
+        </div>
+        <p>rotateY(90deg)</p>
+    </div>
+    <h2 style="width: 100%;text-align: center;margin: 20px;">Transform origin</h2>
+    <div class="card">
+        <div class="bg">
+            <div class="box boxS" style="top: 0; transform-origin: 100% 0 0;"></div>
+        </div>
+        <p>transform-origin : 100% 0 0
+            rotate(45deg)</p>
+    </div>
+    <div class="card">
+        <div class="bg">
+            <div class="box boxT" style="top: 0; transform-origin: 0 100% 0;"></div>
+        </div>
+        <p>transform-origin : 0 100% 0
+            rotate(45deg)</p>
+    </div>
+    <div class="card" style="margin: 20px 55px;">
+        <div class="bg" style="perspective: 200px;">
+            <div class="box boxU" style="top: 0; transform-origin: 0 100% 0;margin:0;"></div>
+        </div>
+        <p>transform-origin : 0 100% 0
+            rotateX(45deg)</p>
+    </div>
+    <div class="card">
+        <div class="bg" style="perspective: 200px;">
+            <div class="box boxV" style="top: 0; transform-origin: 100% 0 0;margin:0;"></div>
+        </div>
+        <p>transform-origin : 0 100% 0
+            rotateX(45deg)</p>
+    </div>
+    <div class="card">
+        <div class="bg" style="perspective: 200px;">
+            <div class="box boxW" style="top: 0; transform-origin: 0 100% 0;margin:0;"></div>
+        </div>
+        <p>transform-origin : 0 100% 0
+            rotateX(45deg)</p>
+    </div>
+    <div class="card" style="margin: 20px;">
+        <div class="bg" style="perspective: 200px;">
+            <div class="box boxX" style="top: 0; transform-origin: 100% 0 0;margin:0;"></div>
+        </div>
+        <p>transform-origin : 100% 0 0
+            rotateY(45deg)</p>
+    </div>
+    <div class="card" style="margin: 20px;">
+        <div class="bg" style="perspective: 200px;">
+            <div class="box boxY" style="top: 0; transform-origin: 100% 0 0;margin:0;"></div>
+        </div>
+        <p>transform-origin : 100% 0 0
+            scale(2)</p>
+    </div>
+    <div class="card" style="margin: 20px 55px;">
+        <div class="bg" style="perspective: 200px;">
+            <div class="box boxZ" style="top: 0; transform-origin: 0 100% 0;margin:0;"></div>
+        </div>
+        <p>transform-origin : 0 100% 0
+            scale(2)</p>
+    </div>
+    <div class="card">
+        <div class="bg" style="perspective: 200px;">
+            <div class="box boxAS" style="top: 0; transform-origin: 100% 0 0;margin:0;"></div>
+        </div>
+        <p>transform-origin : 100% 0 0
+            scaleX(2)</p>
+    </div>
+    <div class="card">
+        <div class="bg" style="perspective: 200px;">
+            <div class="box boxBS" style="top: 0; transform-origin: 0 100% 0;margin:0;"></div>
+        </div>
+        <p>transform-origin : 0 100% 0
+            scaleX(2)</p>
+    </div>
+    <div class="card">
+        <div class="bg" style="perspective: 200px;">
+            <div class="box boxCS" style="top: 0; transform-origin: 100% 0 0;margin:0;"></div>
+        </div>
+        <p>transform-origin : 100% 0 0
+            scaleY(2)</p>
+    </div>
+    <div class="card">
+        <div class="bg" style="perspective: 200px;">
+            <div class="box boxDS" style="top: 0; transform-origin: 0 100% 0;margin:0;"></div>
+        </div>
+        <p>transform-origin : 0 100% 0
+            scaleY(2)</p>
+    </div>
+</body>
+
+</html>

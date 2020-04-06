@@ -1,0 +1,109 @@
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.wrap::after {
+  content: '';
+  clear: both;
+  display: block;
+}
+section.dropli {
+  background-color: aqua;
+  width: 1200px;
+  margin: 0 auto;
+  padding: 100px 0;
+}
+section.dropli .wrap {
+  border-radius: 5px;
+  width: 1130px;
+  background: url(../img/bg/appointment-form.png) center no-repeat;
+  margin: 0 auto;
+  padding: 50px 20px;
+  background-size: 100% auto;
+}
+section.dropli .wrap form {
+  line-height: 71px;
+}
+section.dropli .wrap form .box {
+  width: 750px;
+  font-size: 0;
+}
+section.dropli .wrap form .box label.input {
+  width: 20%;
+  display: inline-block;
+}
+section.dropli .wrap form .box label.input input {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-left: 1px solid #e4e4e4;
+  height: 69px;
+  padding-left: 15px;
+}
+section.dropli .wrap form .box label.input:last-child {
+  width: 30%;
+}
+section.dropli .wrap form .box label.drop {
+  width: 30%;
+  background: white;
+  top: 0;
+  display: inline-block;
+  line-height: 71px;
+  font-size: 16px;
+  position: relative;
+  top: 2px;
+  left: 0;
+}
+section.dropli .wrap form .box label.drop span {
+  padding: 0 20px;
+}
+section.dropli .wrap form .box label.drop span i {
+  transition: all .3s;
+  line-height: 70px;
+}
+section.dropli .wrap form .box label.drop ul.card {
+  background: yellow;
+  width: 100%;
+  opacity: 0;
+  transition: all .5s;
+  transform: scale(0.7);
+  margin-top: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+section.dropli .wrap form .box label.drop ul.card li {
+  padding: 0 20px;
+  text-align: center;
+}
+section.dropli .wrap form .box label.drop ul.card li:first-child {
+  font-weight: bold;
+  background: #f6f6f6;
+}
+section.dropli .wrap form .box label.drop ul.card li:hover {
+  background: #e4e4e4;
+}
+section.dropli .wrap form .box label.drop:hover ul.card {
+  opacity: 1;
+  transform: scale(1);
+  top: 70px;
+}
+section.dropli .wrap form .box label.drop:hover span i {
+  transform: rotateZ(-180deg);
+}
+section.dropli .wrap form input.btn {
+  height: 71px;
+  background: orange;
+  border: none;
+  outline: none;
+  padding: 0 50px;
+  color: white;
+}
+section.dropli .wrap form input.btn:hover {
+  background: #222222;
+}
+/*# sourceMappingURL=./dstyle.css.map */

@@ -1,0 +1,319 @@
+@main-red: #fc427b;
+
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+#vbar {
+    border: none;
+    background: none;
+    padding: 15px 45px;
+    margin: 0;
+    // height: 50px;
+
+    .navbar-brand {
+        font-family: "Srisakdi", cursive;
+        color: @main-red;
+        font-size: 40px;
+        font-weight: bold;
+        text-shadow: 2px 5px 3px rgba(0, 0, 0, 0.06);
+        letter-spacing: -1px;
+        margin: 0;
+        // padding: 0;
+
+        &:hover {
+            color: @main-red;
+            /*  */
+        }
+    }
+
+    ul {
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: left;
+
+
+
+        li.push a {
+            color: @main-red;
+        }
+
+        a {
+            color: #4c4c4c;
+            text-transform: capitalize;
+            font-weight: 500;
+            font-size: 15px;
+            letter-spacing: 1px;
+            padding: 15px 0;
+            margin: 0 0 0 24px;
+        }
+    }
+
+    .navbar-nav>li:hover>a,
+    .navbar-nav>li.active>a {
+        color: @main-red;
+    }
+
+    .nav .open>a,
+    .nav .open>a:hover {
+        background: none;
+        color: @main-red;
+    }
+
+    .navbar-nav>li:hover>a,
+    .navbar-nav>li.active>a {
+        color: @main-red;
+    }
+
+    .nav .open>a,
+    .nav .open>a:hover {
+        background: none;
+        color: @main-red;
+    }
+
+    .navbar-nav>li>.dropdown-menu {
+        border-radius: 5px;
+        background: #333;
+        padding: 10px;
+
+        li {
+            a {
+                color: white;
+                margin: 0;
+                padding: 3px 10px;
+                transition: all .3s;
+
+                &:hover {
+                    color: #333;
+                }
+            }
+        }
+    }
+}
+
+.vbanner {
+    position: relative;
+
+    .carousel-indicators {
+        li {
+            width: 16px;
+            height: 16px;
+            border: 3px solid white;
+            position: relative;
+            left: 0;
+            bottom: 0;
+
+            &.active {
+                background: @main-red;
+            }
+        }
+    }
+
+    .carousel-inner>.item {
+        height: 745px;
+
+        img {
+            width: 100%;
+        }
+
+        .carousel-caption {
+            width: 100%;
+            right: 0;
+            left: auto;
+            top: 0;
+            bottom: auto;
+            text-align: right;
+            margin-top: 230px;
+
+            h3 {
+                // width: 560px;
+                color: #fff;
+                text-transform: capitalize;
+                font-weight: 700;
+                font-size: 56px;
+                text-shadow: 2px 5px 3px rgba(0, 0, 0, 0.06);
+            }
+
+            h5 {
+                color: #000;
+                font-size: 22px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                margin-bottom: 10px;
+            }
+
+            a.btn {
+                margin-top: 48px;
+                background: #fc427b;
+                border: 2px solid white;
+                color: white;
+                padding: 12px 25px;
+                font-weight: 400;
+                line-height: 1.42857143;
+                text-align: center;
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                white-space: nowrap;
+                font-size: 14px;
+                text-transform: uppercase;
+                letter-spacing: 0.3px;
+                transition: color 0.15s ease-in-out,
+                    background-color 0.15s ease-in-out,
+                    border-color 0.15s ease-in-out,
+                    box-shadow 0.15s ease-in-out;
+
+                &:hover {
+                    background: white;
+                    color: black;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1500px) {
+    .vbanner {
+        .carousel-inner>.item {
+            height: 650px;
+
+            .carousel-caption {
+                margin-top: 70px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .vbanner {
+        .carousel-inner>.item {
+            height: 550px;
+
+            .carousel-caption {
+                margin-top: 20px;
+            }
+        }
+    }
+
+    @media (max-width: 992px) {
+        .vbanner {
+            .carousel-inner>.item {
+                height: 450px;
+
+                .carousel-caption {
+                    margin-top: 50px;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        .vbanner {
+            .carousel-inner>.item {
+                height: 300px;
+
+                .carousel-caption {
+                    margin-top: -7px;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 320px) {
+        .vbanner {
+            .carousel-inner>.item {
+                height: 300px;
+
+                .carousel-caption {
+                    margin-top: -7px;
+                }
+            }
+        }
+    }
+
+    .vwelcome {
+        padding-top: 63px;
+
+        .container {
+            padding: 50px 25px 0;
+
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        h3 {
+            font-size: 40px;
+            letter-spacing: 1px;
+            font-weight: 100;
+            padding-top: 30px;
+            text-shadow: 2px 5px 3px rgba(0, 0, 0, 0.06);
+        }
+
+        h4 {
+            font-size: 22px;
+            line-height: 1.5;
+            letter-spacing: 1px;
+            font-family: initial;
+            color: #464646;
+            font-style: italic !important;
+            margin: 16px 0 48px;
+        }
+
+        span {
+            background: #fc427b;
+            font-size: 28px;
+            padding: 30px;
+            color: white;
+            border-radius: 50%;
+        }
+
+        h5 {
+            font-size: 18px;
+            padding: 20px 0;
+        }
+
+        p {
+            margin: 0;
+            padding: 0;
+            font-size: 15px;
+            letter-spacing: 1px;
+            line-height: 1.9;
+            color: #999;
+            font-family: 'Sintony', sans-serif;
+        }
+
+    }
+
+    .vserives {
+        background: #fc427b;
+        text-align: center;
+        color: white;
+        padding: 106px 0;
+
+        span {
+            border-radius: 50%;
+            border: 3px solid white;
+            padding: 25px;
+            font-size: 24px;
+        }
+
+        h5 {
+            font-weight: bold;
+            font-size: 24px;
+            margin: 45px 0 30px 0;
+        }
+
+        p {
+            margin: 0;
+            padding: 0;
+            font-size: 15px;
+            letter-spacing: 1px;
+            line-height: 1.9;
+            font-family: 'Sintony', sans-serif;
+            color: #fdfdfd;
+            font-weight: 300;
+            box-sizing: border-box;
+        }
+    }

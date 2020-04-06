@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canvas {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <script>
+        /** @type {HTMLCanvasElement} */
+        var canvas = document.getElementById("canvas");
+        // 获取canvas元素
+        var context = canvas.getContext("2d");
+        // 获取上下文
+
+        context.beginPath();
+        // 描边色 
+        context.strokeStyle = 'green';
+        // 线宽
+        context.lineWidth = 50;
+
+        // 线帽
+        context.lineCap = 'round';
+
+        //左手
+        context.moveTo(120, 160);
+        context.lineTo(120, 280);
+
+        // 右手
+        context.moveTo(380, 160);
+        context.lineTo(380, 280);
+
+        // 左脚
+        context.moveTo(200, 350);
+        context.lineTo(200, 420);
+
+        // 右脚
+        context.moveTo(300, 350);
+        context.lineTo(300, 420);
+
+        // 描边
+        context.stroke();
+
+        // 头
+        context.beginPath();
+        context.fillStyle = 'green';
+        context.arc(250, 140, 100, 0, -Math.PI, true);
+        context.fill();
+
+        // 天线
+        context.beginPath();
+        context.lineWidth = 4;
+        context.moveTo(170, 20);
+        context.lineTo(200, 70);
+        context.moveTo(330, 20);
+        context.lineTo(300, 70);
+        context.stroke();
+
+        // 眼睛
+        context.beginPath();
+        context.fillStyle = 'white';
+        context.arc(200, 100, 10, 0, 2 * Math.PI);
+        context.arc(300, 100, 10, 0, 2 * Math.PI);
+
+        // 填充
+        context.fill();
+
+        // 身体
+        context.beginPath();
+        context.fillStyle = 'green';
+        context.moveTo(150, 150);
+        context.lineTo(350, 150);
+        context.lineTo(350, 300);
+
+        // 右臀
+        context.arcTo(350, 350, 300, 350, 40);
+        context.lineTo(300, 350);
+
+        // 左臀
+        context.arcTo(150, 350, 150, 300, 40);
+        context.closePath();
+        context.fill();
+    </script>
+</body>
+
+</html>

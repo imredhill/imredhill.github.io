@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .stage {
+        width: 300px;
+        margin: 0 auto;
+    }
+
+    .stage .pic {
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+
+    .stage canvas#main {
+        outline: 1px solid navy;
+    }
+
+    .stage canvas#piece {
+        /* outline: 1px solid red; */
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 9;
+    }
+
+    .sliderContainer {
+        text-align: center;
+        border: 1px solid gray;
+        height: 40px;
+        line-height: 40px;
+        position: relative;
+        top: 0;
+        left: 0;
+        
+    }
+
+    .sliderContainer .sliderMask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: lightblue;
+    }
+
+    .sliderContainer.error .sliderMask {
+        outline: 1px solid red;
+    }
+
+    .sliderContainer .sliderMask .slider {
+        position: relative;
+        top: 0;
+        width: 40px;
+        height: 40px;
+        background: white;
+        transition: background 0.3s;
+        outline: 1px solid gray;
+        /* pointer-events: none; */
+    }
+
+    .sliderContainer .sliderMask .slider:hover {
+        background: lightblue;
+    }
+
+    .sliderContainer .sliderMask .slider:hover .sliderIcon {
+        background-position-y: -13px;
+    }
+
+    .sliderContainer .sliderMask .slider .sliderIcon {
+        width: 14px;
+        height: 10px;
+        display: block;
+        background: url("./icon_light.f13cff3.png") 0 -26px;
+        position: relative;
+        top: 15px;
+        left: 13px;
+    }
+
+    .refreshIcon {
+        position: absolute;
+        width: 27px;
+        height: 27px;
+        top: 0;
+        right: 0;
+        border-radius: 50%;
+        background: url("./icon_light.f13cff3.png") -3px -404px;
+        z-index: 99;
+    }
+</style>
+</style>
+
+<body>
+    <div class="stage">
+        <div class="pic">
+            <canvas id="main" width="300" height="150"></canvas>
+            <canvas id="piece" width="300" height="150"></canvas>
+            <div class="refreshIcon"></div>
+        </div>
+        <div class="sliderContainer error">
+            <div class="sliderMask" style="width: 40px;">
+                <div class="slider" style="left: 0px;">
+                    <span class="sliderIcon"></span>
+                </div>
+            </div>
+            <span class="sliderText">请向右滑动滑块填充拼图</span>
+        </div>
+        <img id="source" style="display: none;" src="https://i.picsum.photos/id/24/300/150.jpg" alt="" />
+        <script>
+            var userInput = 0;
+            var sliderContainer = document.querySelector(".sliderContainer");
+            var sliderMask = document.querySelector(".sliderMask");
+            var slider = document.querySelector(".slider");
+            var piece = document.getElementById("piece");
+            var main = document.getElementById("main");
+            var source = document.querySelector("#source");
+
+            slider.onmousedown = function (e) {
+                if (e.which !== 1) {
+                    return;
+                }
+
+                sliderContainer.onmousemove = function (event) {
+                    var x = event.pageX - this.offsetLeft - e.offsetX;
+                    // 页面偏移 -父元素左边距离 = 父元素内偏移
+
+                    // console.log(event.pageX, this.offsetLeft,e.offsetX);
+                    console.log(x);
+                    
+                    // 最小不能小于0  最大不能大于 300-40
+                    if (x > 300 - 40 || x < 0) {
+                        return;
+                    }
+
+                    userInput = x;
+
+                    // 设置slider的定位
+                    slider.style.left = x + "px";
+                    sliderMask.style.width = x + 40 + "px";
+
+                    // 移动 piece
+                    piece.style.left = userInput + "px";
+                };
+            };
+
+            function generateRandomNum(m, n) {
+                return Math.floor(Math.random() * (n - m)) + m;
+            }
+            var RandomNum;
+
+            // 画出 main
+
+            function drawMain() {
+                // 随机取位置
+                RandomNum = generateRandomNum(50, 250);
+
+                /** @type {HTMLCanvasElement} */
+
+                // 获取canvas元素
+                var context = main.getContext("2d");
+
+                context.drawImage(source, 0, 0);
+
+                // 画出路径
+                context.beginPath();
+                context.moveTo(RandomNum, 75 - 25);
+                context.lineTo(RandomNum - 25, 75 + 25);
+                context.lineTo(RandomNum + 25, 75 + 25);
+                context.closePath();
+
+                context.fillStyle = "white";
+                context.fill();
+            }
+
+            /** @type {HTMLCanvasElement} */
+            function drawPiece() {
+                // 获取canvas元素
+                var context = piece.getContext("2d");
+
+                context.clearRect(0, 0, 300, 150);
+
+                // 画出路径
+                context.beginPath();
+                context.moveTo(25, 75 - 25);
+                context.lineTo(0, 75 + 25);
+                context.lineTo(25 + 25, 75 + 25);
+                context.closePath();
+
+                context.clip();
+                context.drawImage(source, RandomNum - 25, 50, 50, 50, 0, 50, 50, 50);
+            }
+
+            source.onload = function () {
+                init();
+            };
+
+            function init() {
+                drawMain();
+                drawPiece();
+
+                // 设置slider的定位
+                slider.style.left = 0 + "px";
+                sliderMask.style.width = 0 + 40 + "px";
+
+                // 移动 piece
+                piece.style.left = 0 + "px";
+                userInput = 0;
+            }
+
+            // 放开之后验证
+            function check() {
+                sliderContainer.onmousemove = null;
+                console.log("userInput", userInput, "RandomNum", RandomNum);
+
+                if (Math.abs(userInput - (RandomNum - 25)) < 5) {
+                    alert("验证成功");
+                
+                } else {
+                    console.log("验证失败");
+
+                    // 重新获取图片
+                    source.src = "https://i.picsum.photos/id/" + generateRandomNum(10, 100) + "/300/150.jpg";
+                    init();
+                }
+            }
+            slider.onmouseup = check;
+
+            document.querySelector(".refreshIcon").onclick = function () {
+                // 重新获取图片
+                source.src = "https://i.picsum.photos/id/" + generateRandomNum(10, 100) + "/300/150.jpg";
+                init();
+            };
+        </script>
+</body>
+
+</html>

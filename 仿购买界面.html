@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.bootcss.com/meyer-reset/2.0/reset.min.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<style>
+    .content {
+        width: 350px;
+        /* background-color: cadetblue; */
+        margin: 0 auto;
+        margin-top: 50px;
+        clear: both;
+    }
+
+    .content ul {
+        display: inline-block;
+        line-height: 35px;
+    }
+
+    .content span {
+        float: left;
+    }
+
+    .content ul li {
+        float: left;
+        width: 80px;
+        height: 30px;
+        border: 1px solid gray;
+        text-align: center;
+        line-height: 30px;
+        padding: 5px;
+        margin: 5px;
+        cursor: pointer;
+
+    }
+
+    .content ul li.active {
+        background: url(./images/on.png) no-repeat right bottom;
+        /* background-position-x: 75px;
+        background-position-y: 26px; */
+        border: orange 1.4px solid;
+    }
+
+    .bottom {
+        width: 350px;
+        margin: 0 auto;
+        color: orangered;
+    }
+
+    .bottom .price {
+        font-size: 20px;
+
+    }
+
+    .bottom button {
+        width: 350px;
+        height: 50px;
+        background-color: red;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        color: honeydew;
+        font-size: 16px;
+        letter-spacing: 3px;
+    }
+</style>
+
+<body>
+    <div class="content">
+        <ul id="model">
+            <span>型号</span>
+            <li class="active">4.7英寸</li>
+            <li>5.5英寸</li>
+        </ul><br>
+        <ul id="color">
+            <span>颜色</span>
+            <li class="active">银色</li>
+            <li>金色</li>
+            <li>深空灰色</li>
+        </ul><br>
+        <ul id="memory">
+            <span>内存</span>
+            <li class="active">16GB</li>
+            <li>64GB</li>
+            <li>128GB</li>
+        </ul><br>
+        <ul id="edition">
+            <span>版本</span>
+            <li class="active">公开版</li>
+            <li>移动赠费版</li>
+            <li>联通合约版</li>
+        </ul>
+        <hr>
+    </div>
+    <div class="bottom">
+        价格：<span id="price">￥5388</span>.00<br><br>
+        <button>立刻购买</button>
+    </div>
+
+</body>
+<script>
+    var li1 = document.getElementById("model").getElementsByTagName('li')
+    var li2 = document.getElementById("color").getElementsByTagName('li')
+    var li3 = document.getElementById("memory").getElementsByTagName('li')
+    var li4 = document.getElementById("edition").getElementsByTagName('li')
+    var li5 = document.querySelectorAll("li")
+    var model = document.getElementById("model")
+    var memory = document.getElementById("memory")
+    var price = document.getElementById("price");
+
+    console.log(li1)
+    for (var i = 0; i < li5.length; i++) {
+        li5[i].onclick = function () {
+            var select = this.parentNode.children
+            // console.log(select)
+            for (var h = 0; h < select.length; h++) {
+                select[h].className = ''
+            }
+            this.className = 'active'
+            console.log(this.parentNode)
+            if (this.parentNode == model || this.parentNode == memory) {
+                buy();
+            }
+        }
+    }
+
+    function buy() {
+        var price1 = 0
+        var price2 = 0
+        for (var i = 0; i < li1.length; i++) {
+            if (li1[i].className == 'active') {
+                price1 = i ? 6088 : 5288;
+                break;
+            }
+        }
+
+        for (var i = 0; i < li3.length; i++) {
+            if (li3[i].className == 'active') {
+                switch (i) {
+                    case 0:
+                        price2 = 0;
+                        break;
+
+                    case 1:
+                        price2 = 600;
+                        break;
+
+                    case 2:
+                        price2 = 1200;
+                        break;
+                }
+            }
+        };
+        console.log(price1, price2)
+        price.innerHTML = '￥' + (price1 + price2);
+    }
+</script>
+
+</html>

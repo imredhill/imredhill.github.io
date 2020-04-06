@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        text-align: center;
+    }
+
+    button {
+        padding: 17px 50px;
+        background: lightsteelblue;
+        color: brown;
+        border: none;
+        outline: none;
+        font-size: 24px;
+        position: relative;
+        z-index: 0;
+        overflow: hidden;
+        transition: all 1s;
+    }
+
+    button:hover {
+        transition: all 1s;
+    }
+
+    /* 底色 */
+    button::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(32, 178, 171, 0.3);
+        z-index: -2;
+        transition: inherit;
+    }
+
+    button:hover::before {
+        top: 0%;
+        transition: inherit;
+        background: rgba(32, 178, 171, 1);
+    }
+
+    /* 泡泡层 */
+    button::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background-image: radial-gradient(circle at 5% 75%, transparent 0.5%, white 2%, transparent 2.5%),
+            radial-gradient(circle at 25% 85%, transparent 1%, white 3%, transparent 3.5%),
+            radial-gradient(circle at 35% 65%, transparent 2.5%, white 4%, transparent 4.5%),
+            radial-gradient(circle at 40% 75%, transparent 3.5%, white 6%, transparent 4.5%),
+            radial-gradient(circle at 38% 85%, transparent 1.5%, white 4%, transparent 4.5%),
+            radial-gradient(circle at 55% 65%, transparent 2.5%, white 5%, transparent 5.5%);
+        background-size: 200% 200%;
+        transition: inherit;
+
+    }
+
+    button:hover::after {
+        opacity: 0;
+        background-position: -6% 100%, -3% 180%, -7% 120%, -15% 190%, -20% 135%, -12% 150%;
+    }
+</style>
+
+<body>
+    <button>Bubble Button</button>
+</body>
+
+</html>

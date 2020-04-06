@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+
+</head>
+<style>
+    form{
+        width: 1400px;
+        margin: 50px auto;
+        background-color: #dedede;
+        padding: 50px;
+    }
+    input[type="radio"] {
+        display: none;
+    }
+
+    input[type="checkbox"] {
+        display: none;
+    }
+
+    label div {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        background: url("./img/icr-green-skin.png");
+    }
+
+    .sex label div {
+        background-position-y: -50px;
+    }
+
+    .hobby label div {
+        background-position-y: 0;
+    }
+</style>
+
+<body>
+    <form action="#" method="GET">
+        <div class="sex">
+            单选按钮美化：
+            <br>
+            <label>
+                <div></div>
+                <input type="radio" name="sex" value="male">
+                <span>男</span>
+            </label>
+            <label>
+                <div></div>
+                <input type="radio" name="sex" value="female">
+                <span>女</span>
+            </label>
+            <label>
+                <div></div>
+                <input type="radio" name="sex" value="secret">
+                <span>保密</span>
+            </label>
+        </div>
+        <div class="hobby">
+            多选按钮美化：
+            <br>
+            <label>
+                <div></div>
+                <input type="checkbox" name="hobby" value="chat">
+                <span>交友聊天</span>
+            </label>
+            <label>
+                <div></div>
+                <input type="checkbox" name="hobby" value="game">
+                <span>网络游戏</span>
+            </label>
+            <label>
+                <div></div>
+                <input type="checkbox" name="hobby" value="code">
+                <span>程序编码</span>
+            </label>
+            <label>
+                <div></div>
+                <input type="checkbox" name="hobby" value="shopping">
+                <span>网上购物</span>
+            </label>
+        </div>
+    </form>
+
+    <script>
+        $("label").click(function () {
+            $("label").each(function (index, element) {
+                if ($(element).find("input").prop("checked")) {
+                    $(element).find("div").css("background-position-x", "-100px")
+                } else {
+                    $(element).find("div").css("background-position-x", "0");
+                }
+            });
+        });
+
+        $("label").hover(function () {
+            // over
+            if ($(this).find("input").prop("checked")) {
+                $(this).find("div").css("background-position-x", "-150px")
+            } else {
+                $(this).find("div").css("background-position-x", "-50px")
+            }
+        }, function () {
+            // out
+            if ($(this).find("input").prop("checked")) {
+                $(this).find("div").css("background-position-x", "-100px")
+            } else {
+                $(this).find("div").css("background-position-x", "0px");
+            }
+        });
+    </script>
+</body>
+
+</html>

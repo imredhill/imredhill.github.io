@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://cdn.bootcss.com/meyer-reset/2.0/reset.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+
+</head>
+
+<body>
+
+    <section class="top">
+        <div class="wrap">
+            <div class="left fl">
+                <span>
+                    <i class="fa fa-headphones"></i>
+                    <a href="tel:+968 573979 894">+968 573979 894</a>
+                </span>
+                <span><i class="fa fa-envelope-open"></i>
+                    <a href="mailto:username@gmail.com">username@gmail.com</a>
+                </span>
+            </div>
+            <div class="right fr">
+                <a href=""><i class="fa fa-facebook"></i></a>
+                <a href=""><i class="fa fa-twitter"></i></a>
+                <a href=""><i class="fa fa-pinterest"></i></a>
+                <a href=""><i class="fa fa-vimeo"></i></a>
+            </div>
+        </div>
+    </section>
+    <header class="header">
+        <div class="wrap">
+            <div class="fix">
+                <h1 class="logo fl"><a href="">杀虫网站首页</a></h1>
+                <nav class="menu fr">
+                    <li><a href="">HOME</a></li>
+                    <li><a href="">ABOUT US</a></li>
+                    <li><a href="">CONTACT US</a></li>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <section class="banner">
+        <div class="content">
+            <img src="./img/slider/home1-slide1.jpg" alt="">
+            <img src="./img/slider/home2-slide1.jpg" alt="">
+        </div>
+        <div class="hero wrap">
+            <h3>No 1 Pest Control Services</h3>
+            <h5>
+                <span>ENJOY YOUR HOME</span>
+                <span>TOTALLY PEST FREE</span>
+            </h5>
+            <a href="">LEARN MORE</a>
+        </div>
+        <div class="controller">
+            <button class="prev fa fa-angle-left"></button>
+            <button class="next fa fa-angle-right"></button>
+        </div>
+
+    </section>
+    <section class="appointment">
+        <div class="wrap">
+            <h3>Ready To Appointment</h3>
+            <form class="appoint" action="" method="GET">
+                <div class="customer fl">
+                    <div id="drop">
+                        <h5 id="current">Type Of Service
+                            <i id="abc" class="fa fa-angle-down"></i>
+                        </h5>
+                        <ul id="dropnav">
+                            <li>Type Of Service</li>
+                            <li>Pest Control-2</li>
+                            <li>Pest Control-3</li>
+                            <li>Pest Control-4</li>
+                        </ul>
+                    </div>
+                    <div class="inputbox"><input type="text" placeholder="Name"></div>
+                    <div class="inputbox"><input type="text" placeholder="Phone"></div>
+                    <div class="inputbox"><input type="text" placeholder="Email"></div>
+                </div>
+                <button class="btn fr" type="submit">GET START</button>
+            </form>
+        </div>
+    </section>
+    <section class="aboutus">
+        <div class="wrap">
+            <div class="content">
+                <h3>
+                    <dl>
+                        <dt>About Our Service</dt>
+                        <dd>Lorem ipsum dolor sit amet, consectetur adipisi elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitati ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat Duis aute irure dolor in reprehenderit in
+                            voluptat velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                            cupidatat non proident, sunt in culpa qui officia deserunt mollit.</dd>
+                    </dl>
+                </h3>
+                <ul class="address">
+                    <li class="phone">
+                        <i class="fa fa-headphones"></i>
+                        <a href="tel:+214 587 256">+ 214 587 256</a>
+                    </li>
+                    <li class="email">
+                        <i class="fa fa-envelope"></i>
+                        <a href="mailto:yourmail@email.com">yourmail@email.com</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="frame fr">
+                <img src="./img/about/about.png" alt="">
+            </div>
+        </div>
+
+    </section>
+    <section class="pest-problem">
+        <div class="wrap">
+            <h3 class="content">
+                <dl>
+                    <dt>Pest Problem</dt>
+                    <dd>Lorem ipsum dolor sit amet, consectetur adipisi elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua.</dd>
+                </dl>
+            </h3>
+            <ul class="pest">
+                <li><a href="">SPIDERS</a></li>
+                <li><a href="">MOSQUITOS</a></li>
+                <li><a href="">RODENTS</a></li>
+                <li><a href="">ANTS</a></li>
+                <li><a href="">TERMITES</a></li>
+
+            </ul>
+        </div>
+    </section>
+    <section class="our-service">
+        <div class="wrap">
+            <h3 class="content">
+                <dl>
+                    <dt>Our Service </dt>
+                    <dd>
+                        Lorem ipsum dolor sit amet, consectetur adipisi elit, sed do eiusmod tempor incididunt ut labore
+                        et dolore magna aliqua.
+                    </dd>
+
+                </dl>
+            </h3>
+        </div>
+    </section>
+
+    <script>
+        document.getElementsByTagName('button')
+
+        var prev = document.getElementsByTagName('button')[0]
+        var next = document.getElementsByTagName('button')[1]
+        var imgs = document.getElementsByClassName('content')[0].getElementsByTagName('img')
+
+        //共用的代码 
+        function share() {
+            for (var i = 0; i < imgs.length; i++) {
+                imgs[i].style.opacity = 0
+            }
+            imgs[current].style.opacity = 1
+        }
+        var current = 0
+
+        next.onclick = function () {
+            current++
+            if (current > imgs.length - 1) {
+                current = 0
+            }
+            console.log(current)
+            share()
+        }
+
+        prev.onclick = function () {
+            current--
+            if (current < 0) {
+                current = imgs.length - 1
+            }
+            share()
+        }
+
+        var status = 'hide'
+        var dnv = document.getElementById('dropnav')
+        var cur = document.getElementById('current')
+        cur.onclick = function () {
+
+            if (status == 'hide') {
+                // dnv.style.display = 'block' 
+                document.getElementById('abc').style.transform = 'rotateZ(-180deg)'
+                status = 'show'
+                dnv.style.transition = '.5s'
+                dnv.style.opacity = '1'
+                dnv.style.transform = 'scale(1)'
+                dnv.style.visibility = 'visible'
+                dnv.style.top = '75px'
+
+            } else {
+                // dnv.style.display = 'none'
+                document.getElementById('abc').style.transform = 'rotateZ(0deg)'
+                status = 'hide'
+                dnv.style.transition = '.3s'
+                dnv.style.opacity = '0'
+                dnv.style.transform = 'scale(0.7)'
+                dnv.style.visibility = 'hidden'
+
+            }
+
+
+
+        }
+    </script>
+</body>
+
+</html>

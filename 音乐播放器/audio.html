@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./songslist.js"></script>
+</head>
+<style>
+    body {
+        margin: 0;
+        display: flex;
+        /* 高度是可视窗口的100% */
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        transition: all .5s;
+    }
+
+    ul li {
+        margin: 5px;
+        text-align: center;
+        transition: all .5s;
+        padding: 5px;
+    }
+
+    font {
+        background-color: lightskyblue;
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+        padding: 5px;
+        font-size: 20px;
+        font-weight: bolder;
+    }
+
+    h3 {
+        margin-top: 10px;
+        display: inline-block;
+    }
+
+    h5 {
+        display: inline-block;
+    }
+
+    .stage {
+        width: 500px;
+    }
+
+    .card {
+        display: flex;
+        overflow: hidden;
+        border-radius: 15px;
+        position: relative;
+        box-shadow: 0 0 15px 0 gray;
+
+    }
+
+    .card .glue {
+        width: 130px;
+        height: 130px;
+        background: url("https://www.17sucai.com/preview/1160620/2018-10-11/Music-player/images/cd.png");
+        background-size: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        animation: myrotate 6s linear infinite;
+        animation-play-state: paused;
+        margin: 15px 0 15px 15px;
+    }
+
+    .card .glue img {
+        width: 100%;
+        border-radius: 50%;
+    }
+
+    .card .mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("http://p1.music.126.net/hcY73QYZt36DeGf91euboQ==/18921495602636668.jpg");
+        background-size: cover;
+        background-position: center;
+        filter: blur(8px) brightness(0.7);
+        transform: scale(1.2);
+        z-index: -1;
+        transition: all .5s;
+    }
+
+    .card .finger {
+        width: 25px;
+        background: url("https://www.17sucai.com/preview/1160620/2018-10-11/Music-player/images/cd_tou.png") no-repeat;
+        background-size: 100%;
+        transform-origin: 10px 10px;
+        transform: rotate(-10deg);
+        transition: all 0.4s;
+        margin-top: 15px;
+    }
+
+    .stage.playing .card .finger {
+        transform: rotate(10deg);
+    }
+
+    .stage.playing .card .glue {
+        /* 有playing的时候就running */
+        animation-play-state: running;
+    }
+
+    .card .right {
+        flex: 1;
+        margin-left: 15px;
+        color: white;
+
+    }
+
+    .control {
+        margin-bottom: 10px;
+
+    }
+
+    button {
+        color: darkred;
+        font-size: 12px;
+        border-radius: 15px;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        background-color: light;
+        font-weight: bold;
+    }
+
+    @keyframes myrotate {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .progress {
+        height: 35px;
+        position: relative;
+    }
+
+    .progress input {
+        width: 100%;
+        /* display: none; */
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        z-index: 7;
+    }
+
+    .bar {
+        width: 100%;
+        height: 3px;
+        background-color: lightblue;
+        position: relative;
+        top: 17px;
+        left: 0;
+        /* border-radius: 50%; */
+        z-index: 6;
+    }
+
+    .bar i {
+        content: '';
+        width: 10px;
+        height: 10px;
+        background: darkred;
+        position: absolute;
+        left: 0;
+        bottom: -3px;
+        border-radius: 50%;
+    }
+
+    ul li.playing {
+        background: lightblue;
+        color: white;
+
+    }
+</style>
+
+<body>
+    <div class="stage">
+        <audio autoplay src=""></audio>
+        <div class="card">
+            <div class="mask"></div>
+            <div class="glue">
+                <img src="http://p1.music.126.net/hcY73QYZt36DeGf91euboQ==/18921495602636668.jpg" alt="">
+            </div>
+            <div class="finger"></div>
+            <div class="right">
+                <h3>爱</h3>
+                <h5>(Live)</h5>
+                <div class="control">
+                    <button class="prev">上一首</button>
+                    <button class="play">播放</button>
+                    <button class="next">下一首</button>
+                </div>
+                <div class="progress">
+                    <input type="range" value="0" min="0" step="0.01" max="100" />
+                    <div class="bar"><i></i></div>
+                </div>
+                <div class="time">
+                    <span>00:00/</span>
+                    <span>00:00</span>
+                </div>
+            </div>
+        </div>
+        <font>歌曲列表</font>
+        <ul class="list"></ul>
+    </div>
+
+    <script>
+        // songslist.forEach(function (element, index) {
+        //     // console.log(element.id);
+        //     var node = document.createElement("audio");
+        //     node.controls = "controls";
+        //     node.src = "https://music.163.com/song/media/outer/url?id=" + element.id + ".mp3";
+        //     document.body.appendChild(node);
+        // });
+
+        var list = document.querySelector("ul.list");
+        var audio = document.querySelector("audio");
+        var play = document.querySelector(".play");
+        var prev = document.querySelector(".prev");
+        var next = document.querySelector(".next");
+        var stage = document.querySelector(".stage");
+        var h3 = document.querySelector("h3");
+        var progress = document.querySelector(".progress input");
+        var bari = document.querySelector(".bar i");
+        var current = 0;
+
+        // 初始化
+        // songslist歌曲列表展示
+        songslist.forEach(function (element, index) {
+            // console.log(element.id);
+            var node = document.createElement("li");
+            node.innerText = element.name;
+            list.appendChild(node);
+        });
+
+        // 根据歌曲id 返回歌曲 url
+        function countUrl(id) {
+            return "https://music.163.com/song/media/outer/url?id=" + id + ".mp3";
+        }
+        changeSong(songslist[current]);
+
+        // 列表顺序播放
+        audio.onended = function () {
+            current++;
+            if (current > songslist.length - 1) {
+                // 重新从0播放
+                current = 0;
+            }
+            changeSong(songslist[current]);
+        };
+
+
+
+        // 控制
+        play.onclick = function () {
+            // 判断播放状态
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        };
+
+        //下一首
+        next.onclick = function () {
+            current++;
+            if (current > songslist.length - 1) {
+                // 重新从0播放
+                // console.log(songslist.length);
+                current = 0;
+            }
+            changeSong(songslist[current]);
+        }
+
+
+        //上一首
+        prev.onclick = function () {
+            current--;
+            if (current < 0) {
+                // 重新从0播放
+                current = songslist.length - 1;
+            }
+            changeSong(songslist[current]);
+        }
+        // 监听播放状态
+        audio.onplay = function () {
+            // 更改stage 的播放状态 添加class
+            stage.classList.add("playing");
+            // 切换按钮
+            play.innerText = "暂停";
+        };
+
+        audio.onpause = function () {
+            // 更改stage 的播放状态
+            stage.classList.remove("playing");
+            // 切换按钮
+            play.innerText = "播放";
+        };
+        audio.ontimeupdate = function () {
+            // console.log(this.currentTime, this.duration);
+            if (isNaN(this.duration)) {
+                return;
+            }
+            // 更新进度条
+            progress.value = (this.currentTime / this.duration) * 100;
+            bari.style.left = (progress.value) + "%";
+            // console.log(progress.value);
+
+            // 更新时间
+            document.querySelectorAll(".time span")[0].innerText = countTime(this.currentTime);
+        };
+        progress.onchange = function () {
+            console.log(this.value);
+            audio.currentTime = (this.value * audio.duration) / 100;
+        };
+
+        function countTime(n) {
+            var n = Math.floor(n);
+            var m = Math.floor(n / 60);
+            var s = n % 60;
+            m = m > 9 ? m : "0" + m;
+            s = s > 9 ? s : "0" + s;
+            return m + ":" + s;
+        }
+
+        audio.ondurationchange = function () {
+            document.querySelectorAll(".time span")[1].innerText = " / " + countTime(this.duration);
+        };
+
+        // 切换歌曲
+        function changeSong(obj) {
+            // 切换url
+            audio.src = countUrl(obj.id);
+            h3.innerText = obj.name;
+            document.querySelector(".glue img").src = obj.picUrl;
+            document.querySelector(".mask").style.backgroundImage = 'url("' + obj.picUrl + '")';
+            document.querySelectorAll("ul.list li").forEach(function (element, index) {
+                if (index == current) {
+                    element.classList.add("playing");
+                } else {
+                    element.classList.remove("playing");
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

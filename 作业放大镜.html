@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.bootcss.com/meyer-reset/2.0/reset.min.css" rel="stylesheet">
+
+    <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+
+</head>
+<style>
+    body {
+        margin: 0;
+        background: lightblue;
+    }
+
+    #level {
+        width: 100px;
+        position: relative;
+        top: 0;
+        left: 47%;
+        /* display: inline-block; */
+        text-align: center;
+        font-size: 16px;
+        line-height: 24px;
+        border-radius: 24px;
+        padding: 0 10px;
+        outline: none;
+        
+    }
+
+    .box {
+        width: 300px;
+        height: auto;
+        margin: 100px auto;
+        position: relative;
+        cursor: none;
+    }
+
+    .box img {
+        width: 100%;
+        height: auto;
+        vertical-align: middle;
+    }
+
+    .box .mask {
+        width: 150px;
+        height: 150px;
+        background: url('./a6.png') no-repeat;
+        position: absolute;
+        border: 3px solid white;
+        border-radius: 50%;
+        top: 0;
+        left: 0;
+        background-size: 300px;
+        display: none;
+    }
+
+    .box .mask::before,
+    .box .mask::after {
+        content: '';
+        width: 10px;
+        height: 1px;
+        background: white;
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: calc(50% - 10px/2);
+    }
+
+    .box .mask::after {
+        transform: rotate(90deg)
+    }
+</style>
+
+<body>
+    <select name="level" id="level" class="level">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="5">6</option>
+    </select>
+    <div class="box">
+        <img src="./img/a6.png" alt="">
+        <div class="mask"></div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $(".level").change(function () {
+                var w = $(".box").width();
+                var h = $(".box").height();
+                var mw = $(".mask").width()
+                var level = Number($(this).val())
+                // $(".box").hover(
+                //     function () {
+                //         $(".mask").show();
+                //     },
+                //     function () {
+                //         $(".mask").hide();
+                //     }
+                // );
+                $(".box").bind("mousemove", function (e) {
+                    $(".mask").css({
+                        "background-size": w * level + 'px auto',
+                        "display": "block"
+                    });
+                    var x = event.pageX - $(".box").offset().left;
+                    var y = event.pageY - $(".box").offset().top;
+                    if (x < 0 || y < 0 || x > w || y > h) {
+                        $(".mask").css("display", "none");
+                        return
+                    }
+                    $(".mask").css({
+                        "left": x - mw / 2 + 'px',
+                        "top": y - mw / 2 + 'px',
+                        "background-position-x": -(x * level - mw / 2) + 'px',
+                        "background-position-y": -(y * level - mw / 2) + 'px'
+                    });
+                });
+
+            });
+            $(".level").change()
+        });
+    </script>
+</body>
+
+</html>

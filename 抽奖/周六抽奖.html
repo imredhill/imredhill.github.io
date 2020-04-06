@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+   
+        <div class="bg">
+            <div class="stage">
+                <img class="turntable" src="./imgs/turntable.png" alt="">
+                <img class="pointer" src="./imgs/pointer.png" alt="">
+
+            </div>
+        </div>
+        <style>
+            .bg {
+                background: #FFC40A;
+                height: 100%;
+            }
+
+            .stage {
+                width: 650px;
+                height: 600px;
+                background: url('./imgs/turntable-bg.jpg') no-repeat center;
+                position: relative;
+                margin: 50px auto;
+
+
+            }
+
+            .stage img {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            .stage img.turntable {
+                left: 118px;
+                top: 60px;
+                /* transition: all 3s; */
+
+            }
+
+            .stage img.pointer {
+                left: 250px;
+                top: 150px;
+            }
+        </style>
+        <script>
+            var pointer = document.getElementsByClassName('pointer')[0]
+            var turntable = document.getElementsByClassName('turntable')[0]
+            var click = true
+
+
+            function randomer(n) {
+                return Math.floor(Math.random() * n)
+            }
+
+            function numTocode(m) {
+                if (m < 100) {
+                    return {
+                        code: 1,
+                        text: '一等奖'
+                    }
+                } else if (m < 20) {
+                    return {
+                        code: 2,
+                        text: '二等奖'
+                    }
+                } else if (m < 30) {
+                    return {
+                        code: 3,
+                        text: '三等奖'
+                    }
+                } else if (m < 40) {
+                    return {
+                        code: 4,
+                        text: '四等奖'
+                    }
+                } else if (m < 50) {
+                    return {
+                        code: 5,
+                        text: '五等奖'
+                    }
+                } else if (m < 60) {
+                    return {
+                        code: 6,
+                        text: '六等奖'
+                    }
+                } else {
+                    return {
+                        code: 7,
+                        text: '未中奖'
+                    }
+                }
+
+            }
+
+            function turn(x) {
+                var ndeg = (360 / 7 * x) - (360 / 7 / 2) + (360 * 4)
+                turntable.style.transform = 'rotate(' + ndeg + 'deg)'
+                turntable.style.transition = 'all 3s'
+            }
+            pointer.onclick = function () {
+                if (click) {
+                    click = false
+                    var lottery = numTocode(randomer(100))
+                    console.log(lottery)
+                    var z = lottery.code
+                    turn(z)
+
+
+                    setTimeout(function () {
+                        alert(lottery.text)
+                        ndeg = (360 / 7 * z) - (360 / 7 / 2)
+                        turntable.style.transform = 'rotate(' + ndeg + 'deg)'
+                        turntable.style.transition = 'all 0s'
+                        click = true
+                    }, 3000);
+                }
+
+            }
+        </script>
+    </body>
+
+</html>

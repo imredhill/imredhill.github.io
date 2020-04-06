@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box {
+        width: 100px;
+        height: 100px;
+        background-color: teal;
+        position: relative;
+        /* animation-name: mymove; */
+        animation-name: myrotate;
+        animation-duration: 2s;
+
+        /* 设置动画将如何完成一个周期 */
+        /* animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1.2); */
+
+        /* 延时 */
+        /* animation-delay: 1s; */
+
+        /* 定义动画的播放次数。  infinite无限次*/
+        animation-iteration-count: infinite;
+        /* 在动画结束后，动画将应用该属性值。 */
+        animation-fill-mode: forwards;
+        animation-direction: alternate;
+        animation-play-state: running;
+    }
+
+    @keyframes mymove {
+        from {
+            left: 0;
+        }
+
+        to {
+            left: 500px;
+        }
+    }
+
+    @keyframes myrotate {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+
+        }
+    }
+</style>
+
+<body>
+    <div class="box">box</div>
+</body>
+
+</html>

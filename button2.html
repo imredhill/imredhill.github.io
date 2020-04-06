@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    button {
+        padding: 15px 45px;
+        font-size: 24px;
+        background: teal;
+        border: none;
+        outline: none;
+        color: white;
+        transform-origin: 50% 0;
+        /* transition: all 1s; */
+    }
+
+    button:hover {
+        /* transform: skewY(15deg); */
+        animation-name: myskew;
+        animation-duration: 1s;
+        animation-timing-function: linear;
+    }
+
+    @keyframes myskew {
+        0% {
+            transform: skewY(0deg);
+        }
+
+        10% {
+            transform: skewY(-15deg);
+        }
+
+        30% {
+            transform: skewY(10deg);
+        }
+
+        50% {
+            transform: skewY(-8deg);
+        }
+
+        70% {
+            transform: skewY(6deg);
+        }
+
+        90% {
+            transform: skewY(-3deg);
+        }
+
+        100% {
+            transform: skewY(0deg);
+        }
+    }
+</style>
+
+<body>
+    <button>
+        btn
+    </button>
+</body>
+
+</html>

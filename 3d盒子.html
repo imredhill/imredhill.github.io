@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            height: 100%;
+            margin: 0;
+            perspective: 500px;
+        }
+        .cube{
+            width: 300px;
+            height: 300px;
+            /* background: tan; */
+            margin: auto;
+            position: relative;
+            /* 表示所有子元素在3D空间中呈现。*/
+            transform-style: preserve-3d;
+            /* overflow: hidden; */
+            transform: rotateY(30deg) rotateX(10deg) rotateZ(0deg);
+            transition: all 10s;
+        }
+        .cube:hover{
+            transform: rotateY(1800deg) rotateX(1000deg) rotateZ(200deg);
+        }
+        .cube span{
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            /* border-radius: 50%; */
+        }
+        .cube span:nth-child(1){
+            background: teal;
+            transform: rotateX(90deg) translateZ(150px);
+        }
+        .cube span:nth-child(2){
+            background: thistle;
+            transform: rotateX(-90deg) translateZ(150px);
+        }
+        .cube span:nth-child(3){
+            background: tomato;
+            transform: rotateY(-90deg) translateZ(150px);
+        }
+        .cube span:nth-child(4){
+            background: yellowgreen;
+            transform: rotateY(90deg) translateZ(150px);
+        }
+        .cube span:nth-child(5){
+            background: pink;
+            transform:  translateZ(-150px);
+        }
+        .cube span:nth-child(6){
+            background: navy;
+            transform:  translateZ(150px);
+        }
+    </style>
+    <div class="cube">
+        <span>上面</span>
+        <span>底面</span>
+        <span>左面</span>
+        <span>右面</span>
+        <span>后面</span>
+        <span>正面</span>
+    </div>
+</body>
+
+</html>

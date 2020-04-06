@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 150px;
+            height: 150px;
+            background: -webkit-radial-gradient(50px 50px, transparent, darkgreen);
+            border-radius: 50%;
+            position: relative;
+            /* top:0px;
+            left:0px; */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        var box = document.getElementById('box')
+
+        function run(x, y) {
+            var sx = Math.floor(Math.random() * (window.innerWidth - box.offsetWidth));
+            var sy = Math.floor(Math.random() * (window.innerHeight - box.offsetHeight));
+            setInterval(function () {
+
+                //判断小球是否上下撞击屏幕
+                if (box.offsetHeight + box.offsetTop >= window.innerHeight || box.offsetTop <= 0) {
+                    //小球反向
+                    y *= -1; //y=y*-1 1*-1=-1,-1*-1=1...
+                }
+                if (box.offsetWidth + box.offsetLeft >= window.innerWidth || box.offsetLeft <= 0) {
+                    x *= -1
+                }
+                //求出小球的x  y坐标
+                sx += x;
+                sy += y;
+
+                //设置小球位置
+                box.style.left = sx + 'px'
+                box.style.top = sy + 'px'
+            }, 5);
+        }
+        run(2, 2)
+    </script>
+</body>
+
+</html>

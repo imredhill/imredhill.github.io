@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        .stege {
+            width: 500px;
+            margin: 30px auto;
+            box-shadow: 0 0 3px 0 black;
+            position: relative;
+        }
+
+        .stege .big {
+            width: 500px;
+            height: 400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .stege .big img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .stege .big .box-bottom {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url(./img/3.jpg) no-repeat;
+            background-size: cover;
+            z-index: 4;
+        }
+
+        .stege .big .box-top {
+            position: absolute;
+            background: url(./img/2.jpg);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background-size: cover;
+        }
+
+        .stege input.range {
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            z-index: 4;
+            height: 50%;
+            opacity: 0;
+            z-index: 5;
+        }
+
+        .stege input.rangea {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            opacity: 0;
+            height: 50%;
+            z-index: 4;
+        }
+
+        .stege .box {
+            position: absolute;
+            width: 10px;
+            height: 100%;
+            background: teal;
+            top: 0;
+            right: 21px;
+            border-radius: 3px;
+            box-shadow: 0 0 3px 0 navy;
+            z-index: 4;
+        }
+
+        .stege .boxs {
+            position: absolute;
+            width: 10px;
+            height: 100%;
+            background: teal;
+            top: 0;
+            right: 21px;
+            border-radius: 3px;
+            box-shadow: 0 0 3px 0 navy;
+            z-index: 0;
+        }
+
+        .stege .box .content {
+            position: absolute;
+            top: 65%;
+            right: -20px;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            border-radius: 50%;
+            background: teal;
+            margin-top: -25px;
+            box-shadow: 0 0 5px 0 fuchsia;
+            text-shadow: 0 0 2px white;
+        }
+
+        .stege .boxs .contents {
+            position: absolute;
+            top: 36%;
+            right: -20px;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            border-radius: 50%;
+            background: teal;
+            margin-top: -25px;
+            box-shadow: 0 0 5px 0 fuchsia;
+            text-shadow: 0 0 2px white;
+        }
+    </style>
+
+    <div class="stege">
+        <div class="big">
+            <img src="./img/1.jpg" alt="">
+            <div class="box-top"></div>
+            <div class="box-bottom"></div>
+        </div>
+        <input type="range" class="range" value="100" min="0" max="100" step="1">
+        <input type="range" class="rangea" value="100" min="0" max="100" step="1">
+        <div class="box">
+            <div class="content"></div>
+        </div>
+        <div class="boxs">
+            <div class="contents"></div>
+        </div>
+    </div>
+
+    <script>
+        var boxbottom = document.querySelector('.box-bottom')
+        var boxtop = document.querySelector('.box-top')
+        var range = document.querySelector('.range')
+        var rangea = document.querySelector('.rangea')
+        var box = document.querySelector('.box')
+        var boxs = document.querySelector('.boxs')
+        var content = document.querySelector('.content')
+
+        range.oninput = function () {
+            boxbottom.style.width = this.value + '%'
+            box.style.left = this.value + '%'
+            console.log(boxtop.style.width)
+            if (parseInt(boxbottom.style.width) > parseInt(boxtop.style.width)) {
+                boxtop.style.width = boxbottom.style.width
+                boxs.style.left = box.style.left
+            }
+        }
+
+        rangea.oninput = function () {
+            boxtop.style.width = this.value + '%'
+            boxs.style.left = this.value + '%'
+            if (parseInt(boxtop.style.width) < parseInt(boxbottom.style.width)) {
+                boxbottom.style.width = boxtop.style.width
+                box.style.left = boxs.style.left
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,155 @@
+@main-red: #fc427b;
+
+body {
+    font-family: "Poppins", sans-serif;
+}
+.vnavbar {
+    border: none;
+    background: none;
+    padding: 15px 45px;
+    margin-bottom: 0;
+
+    .navbar-brand {
+        font-family: "Srisakdi", cursive;
+        color: @main-red;
+        font-size: 36px;
+        font-weight: bold;
+        &:hover {
+            color: @main-red;
+        }
+    }
+
+    .navbar-nav > li {
+        margin: 0 15px;
+    }
+
+    .navbar-nav > li > a {
+        font-weight: 500;
+        font-size: 16px;
+        padding: 15px 0;
+    }
+
+    .navbar-nav > li:hover > a,
+    .navbar-nav > li.active > a {
+        color: @main-red;
+    }
+
+    .nav .open > a,
+    .nav .open > a:hover {
+        background: none;
+        color: @main-red;
+    }
+    .navbar-nav > li > .dropdown-menu {
+        border-radius: 5px;
+        background: #333;
+        padding: 5px;
+        li {
+            a {
+                color: white;
+                &:hover {
+                    color: #333;
+                }
+            }
+        }
+    }
+}
+
+.vbanner {
+    .carousel-indicators {
+        li {
+            width: 16px;
+            height: 16px;
+            border: 3px solid white;
+            &.active {
+                background: @main-red;
+            }
+        }
+    }
+    .carousel-inner > .item {
+        height: 600px;
+        img {
+            width: 100%;
+        }
+        .carousel-caption {
+            width: 100%;
+            right: 0;
+            left: auto;
+            top: 0;
+            bottom: auto;
+            text-align: right;
+            margin-top: 100px;
+            a.btn {
+                background: #fc427b;
+                border: 2px solid white;
+                font-size: 16px;
+                color: white;
+                padding: 10px 20px;
+                &:hover {
+                    background: white;
+                    color: black;
+                }
+            }
+        }
+    }
+}
+
+.vwelcome {
+    padding-top: 50px;
+    img {
+        max-width: 100%;
+    }
+    h3 {
+        font-family: "Poppins", sans-serif;
+        font-size: 36px;
+        font-weight: 100;
+    }
+    h4 {
+        font-style: italic;
+        font-size: 18px;
+        padding: 20px 0;
+    }
+    span {
+        background: #fc427b;
+        padding: 30px;
+        color: white;
+        border-radius: 50%;
+    }
+    h5 {
+        font-size: 18px;
+        padding: 20px 0;
+    }
+    p {
+        color: gray;
+    }
+}
+
+.vserives {
+    background: #fc427b;
+    text-align: center;
+    color: white;
+    padding: 50px 0;
+    span {
+        border-radius: 50%;
+        border: 3px solid white;
+        padding: 25px;
+        font-size: 24px;
+    }
+    h5 {
+        font-weight: bold;
+        font-size: 24px;
+        margin: 45px 0 30px 0;
+    }
+    p {
+        font-size: 16px;
+        font-family: "Sintony", sans-serif;
+        font-weight: 100;
+    }
+}
+
+// lessc style.less style.css --source-map-inline
+
+// "less.compile": {
+//     "compress":  false,  // true => remove surplus whitespace
+//     "sourceMap": true,  // true => generate source maps (.css.map files)
+//     "out":       true, // false => DON'T output .css files (overridable per-file, see below)
+// }

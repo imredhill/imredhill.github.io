@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="300" height="300"></canvas>
+    <script>
+        /** @type {HTMLCanvasElement} */
+        var canvas = document.getElementById("canvas");
+        // 获取canvas元素
+        var context = canvas.getContext("2d");
+
+        var zoom = true;
+        var minR = 100;
+        var maxR = 60;
+        var n = 0;
+        var count = 2;
+
+        setInterval(function () {
+            context.clearRect(0, 0, 300, 300);
+            if (n < 100) {
+                n += count;
+            } else {
+                n = 0;
+            }
+            var r = minR + ((maxR - minR) * n) / 100;
+            var o = 1 - n / 100;
+            context.beginPath();
+            context.arc(100, 100, 20, 0, 2 * Math.PI);
+            context.fillStyle = "rgba(55, 66, 100, 1)";
+            context.fill();
+            context.closePath();
+
+            context.beginPath();
+            context.arc(100, 100, r, 0, 2 * Math.PI);
+            context.lineWidth = 1;
+            context.strokeStyle = "rgba(55, 66, 100, " + o + ")";
+            context.stroke();
+            context.closePath();
+        }, 30);
+    </script>
+</body>
+
+</html>

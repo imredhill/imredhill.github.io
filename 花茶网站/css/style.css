@@ -1,0 +1,295 @@
+.wrap {
+  width: 1200px;
+  margin: 0 auto;
+}
+.wrap::after {
+  content: '';
+  clear: both;
+  display: block;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+section.header .wrap {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+section.header .wrap h1.logo {
+  display: inline-block;
+}
+section.header .wrap h1.logo a {
+  background: url(../imgs/1.png) no-repeat center left;
+  width: 254px;
+  height: 80px;
+  background-size: 100%;
+  display: block;
+  text-indent: -999px;
+  padding-top: 40px;
+}
+section.header .wrap h1.logo a:first-child {
+  color: white;
+}
+section.header .wrap h3.title {
+  display: inline-block;
+}
+section.header .wrap h3.title span {
+  color: #000000;
+  font-size: 24px;
+  position: absolute;
+  top: 60px;
+  left: 260px;
+  cursor: pointer;
+}
+section.header .wrap nav.menu {
+  list-style: none;
+  display: inline-block;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+section.header .wrap nav.menu li.D {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+section.header .wrap nav.menu li.D ul.drop {
+  margin-top: 10px;
+  opacity: 0.7;
+  position: absolute;
+  top: 50px;
+  width: 140px;
+  transition: all 0.5s;
+  transform: scale(1);
+}
+section.header .wrap nav.menu li.D ul.drop i {
+  position: absolute;
+  top: 4px;
+  left: 66px;
+  color: gray;
+}
+section.header .wrap nav.menu li.D ul.drop li {
+  width: 140px;
+  height: 60px;
+  padding: 0;
+  line-height: 60px;
+  border: none;
+  background: gray;
+  color: #E4393C;
+  display: block;
+}
+section.header .wrap nav.menu li.D ul.drop li:hover {
+  background: orangered;
+}
+section.header .wrap nav.menu li.D:hover ul.drop {
+  transform: scale(1);
+  opacity: 1;
+  top: 110px;
+  padding-top: 10px;
+}
+section.header .wrap nav.menu li.D:hover ul.drop i {
+  position: absolute;
+  top: 4px;
+  left: 66px;
+}
+section.header .wrap nav.menu li {
+  float: left;
+  background: white;
+  width: 140px;
+  height: 120px;
+  text-align: center;
+  line-height: 120px;
+  cursor: pointer;
+}
+section.header .wrap nav.menu li:first-child {
+  border-right: 2px solid white;
+  color: white;
+}
+section.header .wrap nav.menu li a {
+  text-decoration: none;
+  font-size: 16px;
+  color: black;
+}
+section.header .wrap nav.menu li:hover {
+  background: orangered;
+}
+section.header .wrap nav.menu li:hover a {
+  color: white;
+}
+section.header .wrap nav.menu .first {
+  background: orangered;
+}
+section.header .wrap nav.menu .first a {
+  color: white;
+}
+section.banner .content {
+  background: url(../imgs/2.png) no-repeat center;
+  height: 800px;
+  width: 100%;
+}
+section.product .wrap h3.title {
+  margin: 0 auto;
+  text-align: center;
+  padding: 50px 0;
+}
+section.product .wrap h3.title dl dt {
+  font-size: 24px;
+  padding-bottom: 15px;
+}
+section.product .wrap h3.title dl dd {
+  font-size: 14px;
+  color: gray;
+}
+section.product .wrap .big-girds a {
+  text-decoration: none;
+  color: black;
+}
+section.product .wrap .big-girds .card {
+  display: inline-block;
+  width: 24%;
+  margin: 0 auto;
+  text-align: center;
+}
+section.product .wrap .big-girds .card span {
+  display: block;
+  text-align: center;
+  padding: 5px 0 30px 0;
+}
+section.about-us {
+  background: url(../imgs/3.jpg) no-repeat center;
+  width: 100%;
+  height: 719px;
+  background-size: auto 100%;
+}
+section.about-us .wrap h3.title {
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 40px;
+}
+section.about-us .wrap h3.title dl {
+  color: #ffffff;
+}
+section.about-us .wrap h3.title dl dt {
+  font-size: 24px;
+}
+section.about-us .wrap h3.title dl dd {
+  padding-top: 15px;
+  font-size: 14px;
+}
+section.about-us .wrap .content {
+  padding-top: 100px;
+}
+section.about-us .wrap .content .card {
+  display: inline-block;
+  width: 400px;
+  height: 526px;
+}
+section.about-us .wrap .content .card img {
+  width: 100%;
+  height: 100%;
+}
+section.about-us .wrap .content .text {
+  width: 400px;
+  height: 526px;
+  background: #ffffff;
+  display: inline-block;
+}
+section.about-us .wrap .content .text dl {
+  padding: 40px 30px;
+}
+section.about-us .wrap .content .text dl dt {
+  font-size: 18px;
+  color: #333333;
+  padding-bottom: 20px;
+}
+section.about-us .wrap .content .text dl dd {
+  font-size: 14px;
+  color: #666666;
+  line-height: 25px;
+  text-align: justify;
+}
+section.about-us .wrap .content .text .btn {
+  border: none;
+  outline: none;
+  width: 106px;
+  height: 40px;
+  font-size: 14px;
+  color: white;
+  background: #2b2b2b;
+  border-radius: 5px;
+  margin-right: 30px;
+  cursor: pointer;
+}
+section.advantage .wrap {
+  padding-bottom: 100px;
+}
+section.advantage .wrap h3.title {
+  padding-top: 80px;
+}
+section.advantage .wrap h3.title dl {
+  margin: 0 auto;
+  text-align: center;
+}
+section.advantage .wrap h3.title dl dt {
+  font-size: 24px;
+  color: #333333;
+  padding-bottom: 20px;
+}
+section.advantage .wrap h3.title dl dd {
+  font-size: 14px;
+  color: #999999;
+}
+section.advantage .wrap .content {
+  width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 80px;
+}
+section.advantage .wrap .content .box {
+  width: 230px;
+  display: inline-block;
+}
+section.advantage .wrap .content .box .card {
+  background: #E4393C;
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 50%;
+  width: 114px;
+  height: 114px;
+}
+section.advantage .wrap .content .box .card img {
+  padding: 17px;
+}
+section.advantage .wrap .content .box p.title {
+  padding-top: 30px;
+  padding-bottom: 10px;
+  font-size: 16px;
+  color: #333333;
+}
+section.advantage .wrap .content .box p {
+  font-size: 12px;
+  color: #999999;
+  text-align: center;
+  line-height: 30px;
+}
+section.news {
+  background: url(../imgs/9.jpg) no-repeat center;
+  width: 100%;
+  height: 450px;
+}
+section.news .wrap {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+section.news .wrap p {
+  font-size: 24px;
+  color: #ffffff;
+  position: absolute;
+  left: 65px;
+  top: 405px;
+}
+/*# sourceMappingURL=./style.css.map */

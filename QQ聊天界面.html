@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div#chat {
+            width: 600px;
+            background: teal;
+            padding: 10px;
+            margin: 10px auto;
+            border-radius: 5px;
+        }
+
+        div#chat>#message {
+            width: 600px;
+            height: 450px;
+            background: white;
+            border-radius: 5px;
+            padding-top: 10px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+
+        /* 定义轨道的宽度  -webkit谷歌浏览器内核 */
+        div#chat>#message::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        /*定义滚动条轨道 内阴影+圆角*/
+        div#chat>#message::-webkit-scrollbar-track {
+            border-radius: 10px;
+            background-color: transparent;
+        }
+
+        /*定义滑块 内阴影+圆角*/
+        div#chat>#message::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background-color: transparent;
+        }
+
+        div#chat>#message>.message {
+            height: 40px;
+            margin: 5px 20px 5px 0px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        div#chat>#message>.message>span.bubble {
+            background: gray;
+            padding: 10px;
+            border-radius: 5px;
+            float: right;
+            margin-right: 8px;
+        }
+
+        div#chat>#message>.message>span.tail {
+            display: inline-block;
+            width: 0px;
+            border: 10px solid transparent;
+            border-left: 10px solid gray;
+            position: absolute;
+            left: 560px;
+            top: 13px;
+        }
+
+        div#chat>#send {
+            width: 600px;
+            height: 130px;
+            margin: 10px 0px;
+        }
+
+        div#chat>#send>textarea {
+            width: 100%;
+            height: 90px;
+            border-radius: 5px;
+            resize: none;
+            outline: 0;
+            border: 0px;
+            font-size: 18px;
+        }
+
+        div#chat>#send>button {
+            width: 100px;
+            height: 40px;
+            border: 0;
+            border-radius: 10px;
+            float: right;
+            outline: 0px;
+        }
+
+        div#chat>#send>button.active {
+            background: pink;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="chat">
+        <div id="message">
+            <!-- 		<div class="message">
+                <span class="bubble">面向对象，首先得有对象1</span>
+                <span class="tail"></span>
+            </div> -->
+
+        </div>
+        <div id="send">
+            <textarea></textarea>
+            <button>发送（enter）</button>
+        </div>
+        <script>
+            //封装聊天的构造函数
+            function Chat(message, textarea, btn) {
+                this.message = message;
+                this.textarea = textarea;
+                this.btn = btn;
+
+                //调用init初始化方法
+                this.init()
+            }
+
+            //定义初始化函数 init
+            Chat.prototype.init = function () {
+                //给btn绑定鼠标按下事件
+                //将当前对象赋值给that 可以在事件内拿到当前的Chat对象
+                var that = this;
+                this.btn.onmousedown = function (e) {
+
+                    //当前的this代表的是我们的btn按钮而不是Chat
+
+
+                    //判断是否是鼠标左键按下
+                    if (that.mouseLeft(e)) {
+                        //将按钮的颜色改变
+
+                        that.btn.className = 'active';
+
+                        this.onmouseup = function () {
+                            that.btn.className = '';
+                            if (that.mouseLeft(e)) {
+                                //发送消息
+                                that.sendMessage();
+                            }
+                            this.onmouseup = null;
+                        }
+
+                    }
+                }
+                // 调用按键按下
+                this.chatKeyDown()
+
+            }
+
+            //判断是否鼠标左键按下 调用该方法可以自动判断是否左键还是其他键
+            Chat.prototype.mouseLeft = function (evt) {
+                //判断浏览器是否为旧版的IE
+                var isIE = evt ? false : true
+
+                //解决事件兼容
+                evt = evt || window.event;
+
+                //判断是否按下了左键
+                if (evt.button == 0 || (isIE && evt.button == 1)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            //当快捷键按下则发送消息
+            Chat.prototype.chatKeyDown = function () {
+                var that = this;
+                document.onkeydown = function (e) {
+                    e = e || window.event;
+
+                    // 判断是否按下enter
+                    if (e.keyCode == 13) {
+
+                        // 阻止事件的默认行为
+                        e.preventDefault ? e.preventDefault() : returnValue = true;
+
+                        // 发送消息
+                        that.sendMessage();
+                    }
+
+                }
+            }
+
+            //发送消息
+            Chat.prototype.sendMessage = function () {
+                //获取文本域当前输入的值 trim()去除两侧的空格
+                var str = this.textarea.value.trim();
+
+
+                //判断内容是否为空
+                if (!str) {
+                    alert('不能发送空内容')
+                    this.textarea.value = '';
+                } else {
+                    //将输入的消息发送到文本框
+
+                    //创建div
+                    var div = document.createElement('div')
+                    div.className = 'message'
+
+                    //设置消息文字
+                    var span = document.createElement('span')
+                    span.className = 'bubble'
+                    span.innerHTML = str;
+
+                    //将创建的消息文字加入div中
+                    div.appendChild(span)
+
+                    // 创建小三角样式
+                    var tail = document.createElement('span');
+                    tail.className = 'tail';
+
+                    // 将创建的小三角加入到div中
+                    div.appendChild(tail)
+
+                    //将创建好的div加入到message聊天信息框内
+                    this.message.appendChild(div);
+
+                    //将聊天始终固定在底部
+                    this.message.scrollTop = this.message.scrollHeight
+
+                    //将textarea清空
+                    this.textarea.value = '';
+
+
+                }
+            }
+
+            window.onload = function () {
+                //获取到聊天框
+                var message = document.getElementById('message')
+
+                //获取到输入框
+                var textarea = document.getElementsByTagName('textarea')[0]
+
+                // 发送按钮
+                var btn = textarea.nextElementSibling;
+
+                var chat = new Chat(message, textarea, btn)
+            }
+        </script>
+</body>
+
+</html>

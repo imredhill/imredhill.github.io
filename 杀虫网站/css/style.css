@@ -1,0 +1,424 @@
+.wrap {
+  width: 1170px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+.wrap::after {
+  content: '';
+  clear: both;
+  display: block;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+a {
+  text-decoration: none;
+}
+* {
+  transition: all .3s;
+}
+section.top {
+  background: #011a48;
+  padding: 15px 0;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 400;
+  font-family: "Open Sans", sans-serif;
+  line-height: 27px;
+  width: 100%;
+}
+section.top .left span {
+  padding: 4px 20px;
+}
+section.top .left span:first-child {
+  border-right: 1px solid #083281;
+  padding-left: 0;
+}
+section.top .left span a {
+  padding-left: 15px;
+}
+section.top .right {
+  font-size: 16px;
+}
+section.top .right a {
+  margin-left: 22px;
+}
+section.top a {
+  color: #ffffff;
+  transition: all .2s;
+}
+section.top a:hover {
+  color: #F7941D;
+}
+header.header {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Open Sans", sans-serif;
+}
+header.header .wrap h1.logo a {
+  background: url(../img/logo/logo.png) no-repeat center left;
+  width: 200px;
+  height: 80px;
+  display: block;
+  text-indent: -999px;
+}
+header.header .wrap nav.menu li {
+  list-style: none;
+  float: left;
+}
+header.header .wrap nav.menu li a {
+  display: block;
+  color: #222222;
+  line-height: 80px;
+  padding-left: 30px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+}
+header.header .wrap nav.menu li a:hover {
+  color: #F7941D;
+}
+section.banner {
+  position: relative;
+  top: 0;
+  left: 0;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Open Sans", sans-serif;
+  color: #ffffff;
+}
+section.banner .content img {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: all 1s;
+}
+section.banner .content img:first-child {
+  opacity: 1;
+}
+section.banner .hero {
+  padding: 130px 0;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+section.banner .hero h3 {
+  padding: 0 0 16px;
+  font-size: 18px;
+}
+section.banner .hero h5 {
+  color: #fff;
+  font-size: 50px;
+  line-height: 1.2;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+section.banner .hero h5 span {
+  display: block;
+}
+section.banner .hero a {
+  padding: 20px 34px;
+  margin: 32px 0 0;
+  color: #ffffff;
+  display: inline-block;
+  background: #F7941D;
+}
+section.banner .hero a:hover {
+  background-color: #222222;
+}
+section.banner .controller button {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  background: white;
+  border-radius: 50%;
+  color: #222222;
+  line-height: 50px;
+  font-size: 24px;
+  position: absolute;
+  top: 50%;
+  opacity: 0;
+  margin-top: -25px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+section.banner .controller button.prev {
+  left: 0;
+}
+section.banner .controller button.prev:hover {
+  background-color: #F7941D;
+}
+section.banner .controller button.next {
+  right: 0;
+}
+section.banner .controller button.next:hover {
+  background-color: #F7941D;
+}
+section.banner:hover .controller button {
+  opacity: 1;
+}
+section.banner:hover .controller button.prev {
+  left: 30px;
+}
+section.banner:hover .controller button.next {
+  right: 30px;
+}
+section.appointment {
+  padding: 110px 0;
+}
+section.appointment .wrap {
+  width: 1050px;
+  padding: 60px;
+  background: url(../img/bg/appointment-form.png) no-repeat center;
+  background-size: 100% auto;
+  border-radius: 5px;
+}
+section.appointment .wrap h3 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 24px;
+  color: #fff;
+  font-weight: bold;
+  margin: 0 0 30px;
+}
+section.appointment .wrap form.appoint button.btn {
+  padding: 0 45px;
+  height: 70px;
+  line-height: 70px;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  background: #F7941D;
+  cursor: pointer;
+}
+section.appointment .wrap form.appoint button.btn:hover {
+  background: #222222;
+}
+section.appointment .wrap form.appoint::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+section.appointment .wrap form.appoint .customer {
+  width: 840px;
+}
+section.appointment .wrap form.appoint .customer #current {
+  background: #ffffff;
+  line-height: 70px;
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif;
+  padding: 0 18px;
+}
+section.appointment .wrap form.appoint .customer #current i {
+  float: right;
+  line-height: 70px;
+  font-size: 16px;
+  transition: all .2s;
+}
+section.appointment .wrap form.appoint .customer #drop {
+  float: left;
+  width: 30%;
+  position: relative;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+section.appointment .wrap form.appoint .customer #drop ul#dropnav {
+  width: 100%;
+  font-size: 0;
+  position: absolute;
+  left: 0;
+  color: #555555;
+  opacity: 0;
+  transform: scale(0.7);
+}
+section.appointment .wrap form.appoint .customer #drop ul#dropnav li {
+  padding: 0 18px;
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif;
+  line-height: 40px;
+  border: none;
+  outline: none;
+  background: #ffffff;
+}
+section.appointment .wrap form.appoint .customer #drop ul#dropnav li:hover {
+  background-color: #f6f6f6;
+}
+section.appointment .wrap form.appoint .customer #drop ul#dropnav li:first-child {
+  font-weight: bold;
+  border-radius: 5px 5px 0 0;
+}
+section.appointment .wrap form.appoint .customer #drop ul#dropnav li:last-child {
+  border-radius: 0 0 5px 5px;
+}
+section.appointment .wrap form.appoint .customer .inputbox {
+  width: 20%;
+  float: left;
+  height: 70px;
+  color: #ffffff;
+}
+section.appointment .wrap form.appoint .customer .inputbox:last-child {
+  width: 28%;
+}
+section.appointment .wrap form.appoint .customer .inputbox input {
+  width: 100%;
+  height: 100%;
+  padding: 0 0 0 15px;
+  border: none;
+  outline: none;
+  border-left: 1px solid #ccc;
+}
+section.aboutus .wrap {
+  padding-bottom: 110px;
+}
+section.aboutus .wrap .content {
+  width: 570px;
+  padding: 80px 0 0 15px;
+  display: inline-block;
+}
+section.aboutus .wrap .content h3 dl dt {
+  font-size: 48px;
+  font-family: "Montserrat", sans-serif;
+  color: #222222;
+  font-weight: 600;
+  background: url(../img/icon/shape.png) no-repeat left bottom;
+  margin-bottom: 20px;
+  padding-bottom: 30px;
+}
+section.aboutus .wrap .content h3 dl dd {
+  color: #555555;
+  line-height: 1.7;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Open Sans", sans-serif;
+}
+section.aboutus .wrap .content ul.address {
+  margin-top: 52px;
+  display: block;
+}
+section.aboutus .wrap .content ul.address li {
+  float: left;
+}
+section.aboutus .wrap .content ul.address li i {
+  width: 42px;
+  height: 42px;
+  line-height: 42px;
+  text-align: center;
+  border-radius: 50%;
+  background: #F7941D;
+  color: white;
+}
+section.aboutus .wrap .content ul.address li a {
+  padding-left: 15px;
+  text-decoration: none;
+  color: #222222;
+}
+section.aboutus .wrap .content ul.address li a:hover {
+  color: #F7941D;
+}
+section.aboutus .wrap .content ul.address li.email i {
+  background: #152545;
+  margin-left: 25px;
+}
+section.pest-problem {
+  width: 100%;
+  background: #f3f5f6;
+}
+section.pest-problem .wrap {
+  padding: 110px 0;
+}
+section.pest-problem .wrap h3.content dl dt {
+  font-family: "Montserrat", sans-serif;
+  color: #222222;
+  font-weight: 600;
+  font-size: 48px;
+  text-align: center;
+  background: url(../img/icon/shape.png) no-repeat center bottom;
+  margin-bottom: 10px;
+  padding-bottom: 30px;
+}
+section.pest-problem .wrap h3.content dl dd {
+  color: #555555;
+  line-height: 1.7;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Open Sans", sans-serif;
+  margin: 0 263.5px;
+  text-align: center;
+}
+section.pest-problem .wrap ul.pest {
+  margin-top: 50px;
+}
+section.pest-problem .wrap ul.pest li {
+  width: 20%;
+  float: left;
+  text-align: center;
+}
+section.pest-problem .wrap ul.pest li:hover::before {
+  border-color: #F7941D;
+}
+section.pest-problem .wrap ul.pest li a {
+  text-decoration: none;
+  color: #5f5f5f;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-top: 18px;
+  display: block;
+}
+section.pest-problem .wrap ul.pest li a:hover {
+  color: #F7941D;
+}
+section.pest-problem .wrap ul.pest li::before {
+  content: '';
+  width: 90px;
+  height: 90px;
+  display: block;
+  margin: 0 auto;
+  background: no-repeat center;
+  border: 10px solid white;
+  border-radius: 50%;
+  transition: all .3s;
+}
+section.pest-problem .wrap ul.pest li:nth-child(1)::before {
+  background-image: url(../img/icon/pest-1.png);
+}
+section.pest-problem .wrap ul.pest li:nth-child(2)::before {
+  background-image: url(../img/icon/pest-2.png);
+}
+section.pest-problem .wrap ul.pest li:nth-child(3)::before {
+  background-image: url(../img/icon/pest-3.png);
+}
+section.pest-problem .wrap ul.pest li:nth-child(4)::before {
+  background-image: url(../img/icon/pest-4.png);
+}
+section.pest-problem .wrap ul.pest li:nth-child(5)::before {
+  background-image: url(../img/icon/pest-5.png);
+}
+section.our-service {
+  width: 100%;
+}
+section.our-service .wrap {
+  text-align: center;
+  margin: 0 auto;
+}
+section.our-service .wrap h3.content dl dt {
+  font-size: 48px;
+  font-family: "Montserrat", sans-serif;
+  color: #222222;
+  font-weight: 600;
+  background: url(../img/icon/shape.png) no-repeat center bottom;
+}
+section.our-service .wrap h3.content dl dt dd {
+  margin: 0 263.5px;
+}
+/*# sourceMappingURL=./style.css.map */

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.bootcss.com/meyer-reset/2.0/reset.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>轮播图</title>
+</head>
+<style>
+    .swiper {
+        margin: 24px auto;
+        height: 575px;
+        width: 1532px;
+        /* border-radius: 8px; */
+        position: relative;
+        overflow: hidden;
+        /* 让上一张下一张按钮不超出图片 */
+
+    }
+
+    .swiper .content {
+        font-size: 0;
+    }
+
+    .swiper .content img {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        opacity: 1;
+        transition: all .8s;
+    }
+
+    .swiper .content img:first-child {
+        opacity: 0;
+    }
+
+    .swiper .controller button {
+        position: absolute;
+        background-color: transparent;
+        border-radius: 3px;
+        transition: all .2s;
+        cursor: pointer;
+        font-size: 34px;
+        width: 41px;
+        height: 69px;
+        border: none;
+        outline: none;
+        color: grey;
+    }
+
+    .swiper .controller button.prev {
+        position: absolute;
+        left: -40px;
+        top: 45%;
+    }
+
+    .swiper .controller button.next {
+        position: absolute;
+        right: -40px;
+        top: 45%;
+    }
+
+    .swiper:hover .controller button.prev {
+        left: 0px;
+
+    }
+
+    .swiper:hover .controller button.next {
+        right: 0px;
+
+    }
+    .swiper .controller button.prev:hover{
+        background-color: #333;
+    }
+    .swiper .controller button.next:hover{
+        background-color: #333;
+    }
+    .swiper .dot {
+        width: 100%;
+        position: absolute;
+        bottom: 20px;
+        text-align: right;
+        right: 41px;
+    }
+
+    .swiper .dot i {
+        width: 8px;
+        height: 8px;
+        margin: 0 8px;
+        border-radius: 50px;
+        background-color:gray;
+        display: inline-block;
+        cursor: pointer;
+        border:1px solid lightslategray;
+    }
+
+    .swiper .dot :first-child {
+        background-color:white;
+        border:1px solid lightslategray;
+    }
+</style>
+
+<body>
+    <div class="swiper">
+        <div class="content">
+            <img src="./img/1.jpg" alt="">
+            <img src="./img/2.jpg" alt="">
+            <img src="./img/3.jpg" alt="">
+            <img src="./img/4.jpg" alt="">
+            <img src="./img/5.jpg" alt="">
+        </div>
+        <div class="dot"></div>
+        <div class="controller">
+            <button class="prev fa fa-angle-left"></button>
+            <button class="next fa fa-angle-right"></button>
+        </div>
+    </div>
+
+    <script>
+        var swiper = document.querySelector('.swiper')
+        var items = document.querySelectorAll('.swiper .content img')
+        var prev = document.querySelector('.controller .prev')
+        var next = document.querySelector('.controller .next')
+        var dot = document.querySelector('.dot')
+        var current = 0
+
+        items.forEach(function (element, index) {
+            var node = document.createElement('i')
+            // console.log(node)//创建了四个i
+            node.index = index //node.index 等于 各个元素的下标 0 1 2 3
+            dot.appendChild(node)
+        })
+
+        var dots = document.querySelectorAll('.dot i')
+
+        function showPic(index) {
+            items.forEach(function (element) {
+                element.style.opacity = '0'
+
+            })
+            items[index].style.opacity = '1'
+        }
+
+        function showDot(index) {
+            dots.forEach(function (element) {
+                element.style.background = 'gray'
+            })
+            dots[index].style.background = 'white'
+        }
+
+        function nextPic() {
+            current++
+            current = current > (items.length - 1) ? 0 : current
+            showPic(current)
+            showDot(current)
+        }
+
+        function prevPic() {
+            current--
+            current = current < 0 ? (items.length - 1) : current
+            showPic(current)
+            showDot(current)
+        }
+        next.onclick = nextPic
+        prev.onclick = prevPic
+
+        dots.forEach(function (element) {
+            element.onclick = function () {
+                current = this.index
+                showPic(current)
+                showDot(current)
+            }
+        })
+
+        var timer = setInterval(nextPic, 2400)
+
+        swiper.onmouseover = function () {
+            clearInterval(timer)
+        }
+        swiper.onmouseout = function () {
+            timer = setInterval(nextPic, 2400)
+        }
+    </script>
+</body>
+
+</html>

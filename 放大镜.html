@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+    <link href="https://cdn.bootcss.com/meyer-reset/2.0/reset.min.css" rel="stylesheet">
+
+</head>
+<style>
+    .box {
+        width: 400px;
+        height: 400px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .stage {
+        /* float: left; */
+        width: 100%;
+        position: relative;
+        /* background: red; */
+        cursor: crosshair;
+    }
+
+    .original {
+        width: 100%;
+        /* height: 200px; */
+        vertical-align: middle;
+    }
+
+    .zoom {
+        width: 400px;
+        height: 400px;
+
+        background-position-x: 0px;
+        background-position-y: 0px;
+        /* display: none; */
+
+        position: absolute;
+        top: 0;
+        left: 410px;
+    }
+
+    .mask {
+        background: rgba(255, 0, 0, 0.7);
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+
+    ul.list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    ul.list li {
+        width: 18%;
+        float: left;
+        margin-right: 2.5%;
+        margin-top: 2.5%;
+        border: 2px solid black;
+        padding: 2px;
+        box-sizing: border-box;
+    }
+
+    ul.list li:last-child {
+        margin-right: 0;
+    }
+
+    ul.list li.active {
+        border-color: red;
+    }
+
+    ul.list li img {
+        max-width: 100%;
+        vertical-align: middle;
+    }
+</style>
+
+<body>
+    <div class="box">
+        <div class="stage">
+            <img class="original" src="./img/banner1.jpg" alt="" />
+            <div class="mask"></div>
+        </div>
+        <ul class="list">
+            <li class="active"><img src="./img/banner1.jpg" alt="" /></li>
+            <li><img src="./img/banner2.jpg" alt="" /></li>
+            <li><img src="./img/banner3.jpg" alt="" /></li>
+            <li><img src="./img/banner4.jpg" alt="" /></li>
+            <li><img src="./img/banner5.jpg" alt="" /></li>
+        </ul>
+
+        <div class="zoom"></div>
+    </div>
+    <select class="level" name="" id="">
+        <option value="2">2倍</option>
+        <option value="3">3倍</option>
+        <option value="4">4倍</option>
+        <option value="5">5倍</option>
+    </select>
+
+    <script>
+        $(".level").change(function () {
+            var level = Number($(this).val());
+
+            var w = $(".box").width();
+            var h = $(".box").height();
+
+            var mw = w / level;
+            var mh = h / level;
+
+            $(".mask").css({
+                width: mw + "px",
+                height: mh + "px"
+            });
+
+
+            $(".zoom").css({
+                "background-image": "url(" + $(".original").attr("src") + ")",
+                "background-size": level + "00% auto"
+            });
+
+            $("ul.list li").click(function (e) {
+                $(this)
+                    .addClass("active")
+                    .siblings()
+                    .removeClass("active");
+                $(".original").attr(
+                    "src",
+                    $(this)
+                    .find("img")
+                    .attr("src")
+                );
+                $(".zoom").css("background-image", "url(" + $(".original").attr("src") + ")");
+            });
+
+            $(".stage").hover(
+                function () {
+                    $(".zoom").show();
+                },
+                function () {
+                    $(".zoom").hide();
+                }
+            );
+
+            $(".stage").mousemove(function (e) {
+                // values: e.clientX, e.clientY, e.pageX, e.pageY
+                // stage 里面有两个元素 offsetX某个元素上的偏移
+                console.log(event.offsetX, event.offsetY);
+                var x = event.pageX - $(".stage").offset().left;
+                var y = event.pageY - $(".stage").offset().top;
+                console.log(x, y);
+                // 限制范围
+                x = x > w - mw / 2 ? w - mw / 2 : x;
+                x = x < mw / 2 ? mw / 2 : x;
+                y = y > h - mh / 2 ? h - mh / 2 : y;
+                y = y < mh / 2 ? mh / 2 : y;
+                //修正鼠标居中
+                $(".mask").css({
+                    top: y - mh / 2,
+                    left: x - mw / 2
+                });
+                $(".zoom").css({
+                    "background-position-x": (x - mw / 2) * -level,
+                    "background-position-y": (y - mh / 2) * -level
+                });
+            });
+        });
+        $(".level").change()
+    </script>
+</body>
+
+</html>

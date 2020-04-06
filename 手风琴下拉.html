@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/minireset.css/0.0.2/minireset.css" />
+    <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+
+
+    <style>
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .sideMenu {
+            width: 200px;
+            margin: 0 auto;
+        }
+
+        .sideMenu h3 {
+            height: 42px;
+            line-height: 42px;
+            background: #0bb0ba;
+            font-size: 14px;
+            font-weight: bold;
+            color: #fff;
+            padding: 0 10px;
+            font-size: 16px;
+        }
+
+        .sideMenu h3 a {
+            color: white;
+        }
+
+        .sideMenu ul li {
+            height: 36px;
+            line-height: 36px;
+            background: #f7f7f7;
+            border-bottom: 1px solid #fff;
+            padding: 0 10px;
+        }
+
+        .sideMenu ul li a {
+            font-size: 14px;
+            color: #919191;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="sideMenu">
+        <li>
+            <h3>我是一级导航1</h3>
+            <ul>
+                <li><a href="#xxx">二级导航</a></li>
+                <li><a href="#">二级导航</a></li>
+                <li><a href="#">二级导航</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <h3><a href="#">我是一级导航2</a></h3>
+            <ul>
+                <li><a href="#">二级导航</a></li>
+                <li><a href="#">二级导航</a></li>
+                <li><a href="#">二级导航</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <h3>我是一级导航3</h3>
+            <ul>
+                <li><a href="#">二级导航</a></li>
+                <li><a href="#">二级导航</a></li>
+                <li><a href="#">二级导航</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <script>
+        $("ul.sideMenu ul")
+            .hide()
+            .eq(0)
+            .show();
+
+        $("ul.sideMenu>li").click(function () {
+            // console.log(this);
+
+            // console.log($(this).find('ul'));
+            var x = $(this)
+                .find("ul")
+                .slideDown(500)
+                .end()
+                .siblings()
+                .find("ul")
+                .slideUp(10000);
+
+            // console.log(x);
+        });
+    </script>
+</body>
+
+</html>

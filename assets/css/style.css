@@ -1,0 +1,132 @@
+body {
+  font-family: "Poppins", sans-serif;
+}
+.vnavbar {
+  border: none;
+  background: none;
+  padding: 15px 45px;
+  margin-bottom: 0;
+}
+.vnavbar .navbar-brand {
+  font-family: "Srisakdi", cursive;
+  color: #fc427b;
+  font-size: 36px;
+  font-weight: bold;
+}
+.vnavbar .navbar-brand:hover {
+  color: #fc427b;
+}
+.vnavbar .navbar-nav > li {
+  margin: 0 15px;
+}
+.vnavbar .navbar-nav > li > a {
+  font-weight: 500;
+  font-size: 16px;
+  padding: 15px 0;
+}
+.vnavbar .navbar-nav > li:hover > a,
+.vnavbar .navbar-nav > li.active > a {
+  color: #fc427b;
+}
+.vnavbar .nav .open > a,
+.vnavbar .nav .open > a:hover {
+  background: none;
+  color: #fc427b;
+}
+.vnavbar .navbar-nav > li > .dropdown-menu {
+  border-radius: 5px;
+  background: #333;
+  padding: 5px;
+}
+.vnavbar .navbar-nav > li > .dropdown-menu li a {
+  color: white;
+}
+.vnavbar .navbar-nav > li > .dropdown-menu li a:hover {
+  color: #333;
+}
+.vbanner .carousel-indicators li {
+  width: 16px;
+  height: 16px;
+  border: 3px solid white;
+}
+.vbanner .carousel-indicators li.active {
+  background: #fc427b;
+}
+.vbanner .carousel-inner > .item {
+  height: 600px;
+}
+.vbanner .carousel-inner > .item img {
+  width: 100%;
+}
+.vbanner .carousel-inner > .item .carousel-caption {
+  width: 100%;
+  right: 0;
+  left: auto;
+  top: 0;
+  bottom: auto;
+  text-align: right;
+  margin-top: 100px;
+}
+.vbanner .carousel-inner > .item .carousel-caption a.btn {
+  background: #fc427b;
+  border: 2px solid white;
+  font-size: 16px;
+  color: white;
+  padding: 10px 20px;
+}
+.vbanner .carousel-inner > .item .carousel-caption a.btn:hover {
+  background: white;
+  color: black;
+}
+.vwelcome {
+  padding-top: 50px;
+}
+.vwelcome img {
+  max-width: 100%;
+}
+.vwelcome h3 {
+  font-family: "Poppins", sans-serif;
+  font-size: 36px;
+  font-weight: 100;
+}
+.vwelcome h4 {
+  font-style: italic;
+  font-size: 18px;
+  padding: 20px 0;
+}
+.vwelcome span {
+  background: #fc427b;
+  padding: 30px;
+  color: white;
+  border-radius: 50%;
+}
+.vwelcome h5 {
+  font-size: 18px;
+  padding: 20px 0;
+}
+.vwelcome p {
+  color: gray;
+}
+.vserives {
+  background: #fc427b;
+  text-align: center;
+  color: white;
+  padding: 50px 0;
+}
+.vserives span {
+  border-radius: 50%;
+  border: 3px solid white;
+  padding: 25px;
+  font-size: 24px;
+}
+.vserives h5 {
+  font-weight: bold;
+  font-size: 24px;
+  margin: 45px 0 30px 0;
+}
+.vserives p {
+  font-size: 16px;
+  font-family: "Sintony", sans-serif;
+  font-weight: 100;
+}
+/*# sourceMappingURL=./style.css.map */
