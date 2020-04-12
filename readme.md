@@ -16,3 +16,9 @@
 >><a href="./canvas-loading.html" style="text-decoration: none;color: darkslategray;">圆形加载</a>
 >><a href="./放大镜.html" style="text-decoration: none;color: darkslategray;">淘宝放大镜</a>
 >><a href="./模态框.html" style="text-decoration: none;color: darkslategray;">模态框</a>
+
+> ## 静态网站
+>><a href="./农业网站/cultivation.html" style="color: darkslategray;text-decoration: darkslategray;">农业网站</a>
+>><a href="./杀虫网站/pestcontrol.html" style="color: darkslategray;text-decoration: darkslategray;">杀虫网站</a>
+>><a href="./花茶网站/花茶网.html" style="color: darkslategray;text-decoration: darkslategray;">花茶网站</a>
+>><a href="./模特网站/index.html" style="color: darkslategray;text-decoration: darkslategray;">模特网站</a>
