@@ -1,6 +1,2 @@
 # 项目展示
-
-git remote add origin git@github.com:imredhill/imredhill.github.io.git
-123456
-fdafda
-vvvvv
+ <a href="./小球.html">小球</a>
